@@ -17,116 +17,32 @@ namespace LakasFelujitasApp
         public Form1()
         {
             InitializeComponent();
+
+            //bal oldal
             szobakatLetrehoz();
-            szobaCheckBoxok();
             listakatFeltolt();
             pictureBox1.BackColor = Color.White;
-            numMagassag.Maximum = 300;
-            numTobbSzobaMagassag.Maximum = 300;
-            numTobbSzobaMagassag.Value = 245;
-            //numMagassag.Value = 200;
             cmbSzoba.SelectedIndexChanged += cmbSzoba_SelectedIndexChanged;
+            //cmbSzoba.SelectedIndex = 0;
+
+            //jobb oldal
+            szobaCheckBoxok_FalGombok();
+            numMagassag.Maximum = 300;
+            numMagassag.Value = 200;
             numMagassag.ValueChanged += numMagassag_ValueChanged;
-            numTobbSzobaMagassag.ValueChanged += numTobbSzoba_ValueChanged;
-            //szobaKiiras(Szoba.mindenSzoba[0]);
-            cmbSzoba.SelectedIndex = 0;
-            MessageBox.Show("plafonfestés nem követi le a falak kiválasztását" +
-                "\nnincs kezdő alaprajz" +
-                "\n!! a nyilászárók nincsenek falakhoz rendelve !!");
+            chbPlafon.Enabled = false;
+            MessageBox.Show(
+                "\n  festekeSzamol() ellenorzés (nyilaszarok levonódnak?)" +
+                "\n\tplafon számolás" +
+                 "\n\tnyilászáro hozzarandelés, falgombok működése(\n" +
+                 "\na faltagkiolvasó saját FormatException-t majd tesztelni" +
+                "\n\nnincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
+                "\n!! a nyilászárók nincsenek falakhoz rendelve !!" +
+                "\n a beépítési magasság mindhol = 1");
         }
 
-        private void szobaCheckBoxok()
-        {
-            Point poz = chb1.Location;
-            grbSzobak.Controls.Remove(chb1);
-            int szobaTag = 0;
 
-            //checkBox
-            foreach (var szoba in Szoba.mindenSzoba)
-            {
-                CheckBox chb = new CheckBox();
-                chb.Text = szoba.Nev;
-                chb.Location = poz;
-                chb.Tag = szobaTag;
-                chb.Size = new Size(75, 25);
-                chb.CheckedChanged += chbSzoba_CheckedChanged;
-                grbSzobak.Controls.Add(chb);
-
-                //fal gombok
-                Point btnPoz = new Point(poz.X + 80, poz.Y);
-                foreach (var fal in szoba.falakEgyesevel())
-                {
-                    Button btn = new Button();
-                    btn.Text = fal.ToString();
-                    btn.Size = new Size(40, 25);
-                    btn.Location = btnPoz;
-                    btn.Tag = szobaTag;
-                    grbSzobak.Controls.Add(btn);
-                    btnPoz.X += 43;
-                    btn.Click += btnSzobafal_Click;
-                    btn.Enabled = false;
-                    btn.ForeColor = Color.Green;
-                }
-                ////nyilaszaro chb
-                //CheckBox chbNyz = new CheckBox();
-                //chbNyz.Text = "nyz.";
-                //chbNyz.Checked = true;
-                //chbNyz.Location = btnPoz;
-                //chbNyz.Enabled = false;
-                //grbSzobak.Controls.Add(chbNyz);
-
-                poz.Y += 30;
-                szobaTag++;
-                Size s = grbSzobak.Size;
-                grbSzobak.Size = new Size(s.Width, s.Height + 30);
-            }
-        }
-
-        private void btnSzobafal_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            double fal = double.Parse(btn.Text);
-
-            double numFal = (double)numTobbSzobaMagassag.Value / 100;
-            double szobaMag = Szoba.mindenSzoba[(int)btn.Tag].Magassag;
-            numFal = numFal > szobaMag ? szobaMag : numFal;
-
-            fal *= numFal;
-
-
-            double osszesFal = double.Parse(txtTobbSzobaSzinesFestek.Text);
-
-            if (btn.ForeColor == Color.Green)
-            {
-                btn.ForeColor = Color.Red;
-                txtTobbSzobaSzinesFestek.Text = osszesFal - fal + "";
-            }
-            else
-            {
-                btn.ForeColor = Color.Green;
-                txtTobbSzobaSzinesFestek.Text = osszesFal + fal + "";
-            }
-        }
-        private void chbSzoba_CheckedChanged(object sender, EventArgs e)
-        {
-            szinesFestekKiirasTobbSzoba();
-            CheckBox chb = (CheckBox)sender;
-
-            foreach (Control item in grbSzobak.Controls)
-            {
-                if (item is Button && item.Tag.ToString() == chb.Tag.ToString()) ((Button)item).Enabled = chb.Checked;
-            }
-
-
-        }
-        private void listakatFeltolt()
-        {
-            foreach (var sz in Szoba.mindenSzoba)
-            {
-                cmbSzoba.Items.Add(sz.Nev);
-                //chlSzobak.Items.Add(sz.Nev);
-            }
-        }
+        //szobaInfo-s bal oldal
 
         private void szobakatLetrehoz()
         {
@@ -146,28 +62,66 @@ namespace LakasFelujitasApp
             Nyilaszaro wcAjto = new Nyilaszaro(.73, 2);
             Nyilaszaro furdoAjto = new Nyilaszaro(.73, 2);
 
-            Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, -1);
-            Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, -.97);
-            Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, -.97);
+            Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, 1, -1);
+            Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, 1, -.97);
+            Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, 1, -.97);
 
             Nyilaszaro konyhaAjto = new Nyilaszaro(.93, 2);
 
             //kulso nyilaszarok
             Nyilaszaro konyhaAblak = new Nyilaszaro(1.3, 1.43);
-            Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, (2 * 0.14));
+            Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, 1, (2 * 0.14));
             Nyilaszaro nappaliAblak = new Nyilaszaro(1.35, 1.5);
-            Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, (2 * 0.18 - 0.97));
-            Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, (2 * 0.18 - 1.34));
+            Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, 1, (2 * 0.18 - 0.97));
+            Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1, (2 * 0.18 - 1.34));
             Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59);
 
             //nyilaszarokat szobakhoz rendel
-            kamra.nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
-            konyha.nyilaszarok.AddRange(new List<Nyilaszaro>() { konyhaAblak, konyhaAjto });
-            folyoso.nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAjto, wcAjto, furdoAjto, nappaliAjto, haloAjto, konyhaAjto });
-            halo.nyilaszarok.AddRange(new List<Nyilaszaro>() { haloAjto, haloAblak });
-            nappali.nyilaszarok.AddRange(new List<Nyilaszaro>() { nappaliAblak, nappaliErkelyAjto, nappaliAjto });
-            baba.nyilaszarok.AddRange(new List<Nyilaszaro>() { babaAjto, babaErkelyAjto });
+            kamra.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
+            konyha.Nyilaszarok.AddRange(new List<Nyilaszaro>() { konyhaAblak, konyhaAjto });
+            folyoso.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAjto, wcAjto, furdoAjto, nappaliAjto, haloAjto, konyhaAjto });
+            halo.Nyilaszarok.AddRange(new List<Nyilaszaro>() { haloAjto, haloAblak });
+            nappali.Nyilaszarok.AddRange(new List<Nyilaszaro>() { nappaliAblak, nappaliErkelyAjto, nappaliAjto });
+            baba.Nyilaszarok.AddRange(new List<Nyilaszaro>() { babaAjto, babaErkelyAjto });
 
+        }
+        private void listakatFeltolt()
+        {
+            foreach (var sz in Szoba.mindenSzoba)
+            {
+                cmbSzoba.Items.Add(sz.Nev);
+            }
+        }
+        private void btnVisszaTovabb(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int ind = cmbSzoba.SelectedIndex;
+            if (btn.Tag.ToString() == "+")
+            {
+                ind++;
+                ind %= Szoba.mindenSzoba.Count;
+            }
+            else
+            {
+                ind--;
+                if (ind < 0) ind = Szoba.mindenSzoba.Count - 1;
+            }
+            cmbSzoba.SelectedIndex = ind;
+        }
+        private void szobaInfo(Szoba sz)
+        {
+            txtSzelesseg.Text = sz.Szelesseg + "";
+            txtHossz.Text = sz.Hossz.ToString();
+            txtAlapter.Text = sz.alapterulet().ToString();
+            txtOsszFal.Text = sz.festendoFeluletPlafonnal().ToString();
+            listNyilaszarok.Items.Clear();
+            foreach (var ny in sz.Nyilaszarok)
+            {
+                listNyilaszarok.Items.Add($"{ny.Szelesseg} x {ny.Magassag}");
+            }
+
+            txtNyilasOsszfel.Text = sz.nyilaszarokFelulete().ToString();
+            rajzol(sz.alaprajz());
         }
         private void rajzol(Point[] koordinatak)
         {
@@ -182,188 +136,175 @@ namespace LakasFelujitasApp
             //vaszonEldob();
             vaszon.Dispose();
         }
-
-        private void btnVisszaTovabb(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            int ind = cmbSzoba.SelectedIndex;
-            if (btn.Tag.ToString() == "+")
-            {
-                ind++;
-                ind %= Szoba.mindenSzoba.Count;
-            }
-            else
-            {
-                ind--;
-                if (ind < 0) ind = Szoba.mindenSzoba.Count-1;
-            }
-            cmbSzoba.SelectedIndex = ind;
-        }
-
-        //private void vaszonIndit()
-        //{
-        //    vaszon = pictureBox1.CreateGraphics();
-        //}
-        //private void vaszonEldob()
-        //{
-        //    vaszon.Dispose();
-        //}
-        //private void vaszonTorol()
-        //{
-        //    //vaszonIndit();
-        //    //vaszon.Clear(Color.White);
-        //    //vaszonEldob();
-        //}
-
         private void cmbSzoba_SelectedIndexChanged(object sender, EventArgs e)
         {
             Szoba sz = Szoba.mindenSzoba[((ComboBox)sender).SelectedIndex];
-            szobaKiiras(sz);
+            szobaInfo(sz);
         }
 
-        private void szobaKiiras(Szoba sz)
-        {
-            txtSzelesseg.Text = sz.Szelesseg + "";
-            txtHossz.Text = sz.Hossz.ToString();
-            txtAlapter.Text = sz.alapterulet().ToString();
-            txtOsszFal.Text = sz.festendoFeluletPlafonnal().ToString();
-            szinesFestekKiiras();
-            numMagassag.Value = (decimal)sz.Magassag * 100;
-            listNyilaszarok.Items.Clear();
-            foreach (var ny in sz.nyilaszarok)
-            {
-                listNyilaszarok.Items.Add($"{ny.Szelesseg} x {ny.Magassag}");
-            }
 
-            txtNyilasOsszfel.Text = sz.nyilaszarokFelulete().ToString();
-            rajzol(sz.alaprajz());
+        //festék számolós jobb oldal
+
+        private void szobaCheckBoxok_FalGombok()
+        {
+            Point poz = chb1.Location;
+            grbSzobak.Controls.Remove(chb1);
+            int szobaTag = 0;
+
+            //checkBox
+            foreach (var szoba in Szoba.mindenSzoba)
+            {
+                int falTag = 0;
+                CheckBox chb = new CheckBox();
+                chb.Text = szoba.Nev;
+                chb.Location = poz;
+                chb.Tag = szobaTag;
+                chb.Size = new Size(75, 25);
+                chb.CheckedChanged += chbSzoba_CheckedChanged;
+                grbSzobak.Controls.Add(chb);
+
+                //fal gombok
+                Point btnPoz = new Point(poz.X + 80, poz.Y);
+                foreach (var fal in szoba.Falak)
+                {
+                    Button btn = new Button();
+                    btn.Text = fal.Szelesseg.ToString();
+                    btn.Size = new Size(40, 25);
+                    btn.Location = btnPoz;
+                    btn.Tag = szobaTag + "-" + falTag;
+                    falTag++;
+                    grbSzobak.Controls.Add(btn);
+                    btnPoz.X += 43;
+                    btn.Click += btnSzobafal_Click;
+                    btn.Enabled = false;
+                    btn.ForeColor = Color.Green;
+                }
+
+                poz.Y += 30;
+                szobaTag++;
+                Size s = grbSzobak.Size;
+                grbSzobak.Size = new Size(s.Width, s.Height + 30);
+            }
+        }
+        private int falTagKiolvas(Control ctrl)
+        {
+            string[] tagek = ctrl.Tag.ToString().Split('-');
+            if (tagek.Length == 1) { throw new FormatException(); }
+            return int.Parse(tagek[1]);
+        }
+        private int szobaTagKiolvas(Control ctrl)
+        {
+            string[] tagek = ctrl.Tag.ToString().Split('-');
+            return int.Parse(tagek[0]);
+        }
+
+        private void btnSzobafal_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            Szoba szoba = Szoba.mindenSzoba[szobaTagKiolvas(btn)];
+            Fal f = szoba.Falak[falTagKiolvas(btn)];
+            f.Festendo = !f.Festendo;
+
+            falGombSzinezes(btn);
+            festeketSzamol();
+
+            //double fal = double.Parse(btn.Text);
+
+            //double numFal = (double)numTobbSzobaMagassag.Value / 100;
+            //double szobaMag = Szoba.mindenSzoba[(int)btn.Tag].Magassag;
+            //numFal = numFal > szobaMag ? szobaMag : numFal;
+
+            //fal *= numFal;
+
+
+            //double osszesFal = double.Parse(txtTobbSzobaSzinesFestek.Text);
+
+            //if (btn.ForeColor == Color.Green)
+            //{
+            //    btn.ForeColor = Color.Red;
+            //    txtTobbSzobaSzinesFestek.Text = osszesFal - fal + "";
+            //}
+            //else
+            //{
+            //    btn.ForeColor = Color.Green;
+            //    txtTobbSzobaSzinesFestek.Text = osszesFal + fal + "";
+            //}
+        }
+
+        private void chbSzoba_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chb = (CheckBox)sender;
+
+            foreach (Control item in grbSzobak.Controls)
+            {
+                int szobaInd = szobaTagKiolvas(item);
+                if (item is Button && szobaInd == szobaTagKiolvas(chb))
+                {
+                    Button btn = (Button)item;
+                    btn.Enabled = chb.Checked;
+                    Szoba.mindenSzoba[szobaInd].falakatFest(chb.Checked);
+                    falGombSzinezes(btn);
+                }
+            }
+            festeketSzamol();
+        }
+
+        private void falGombSzinezes(Button btn)
+        {
+            int sz = szobaTagKiolvas(btn);
+            int f = falTagKiolvas(btn);
+            if (Szoba.mindenSzoba[sz].Falak[f].Festendo) btn.ForeColor = Color.Green;
+            else btn.ForeColor = Color.Red;
         }
 
         private void numMagassag_ValueChanged(object sender, EventArgs e)
         {
-            szinesFestekKiiras();
+            festeketSzamol();
         }
 
-        private void szinesFestekKiiras()
+        private void festeketSzamol()
         {
             double mag = (double)numMagassag.Value / 100;
-            txtSzinesFestek.Text = Szoba.mindenSzoba[cmbSzoba.SelectedIndex].festendoFeluletAdottMagassagig(mag).ToString();
-        }
-
-        private void numTobbSzoba_ValueChanged(object sender, EventArgs e)
-        {
-            szinesFestekKiirasTobbSzoba();
-        }
-
-
-        private void szinesFestekKiirasTobbSzoba()
-        {
-            double mag = (double)numTobbSzobaMagassag.Value / 100;
-            double osszFal = 0;
-            double osszAlap = 0;
-            foreach (Control ctrl in grbSzobak.Controls)
+            double felulet = 0;
+            foreach (var szoba in Szoba.mindenSzoba)
             {
-                if (ctrl is CheckBox)
-                {
-                    CheckBox chb = (CheckBox)ctrl;
-                    if (chb.Checked)
-                    {
-                        Szoba szoba = Szoba.mindenSzoba[(int)chb.Tag];
-                        osszFal += szoba.festendoFeluletAdottMagassagig(mag);
-                        osszAlap += szoba.alapterulet();
-                    }
-                }
-
+                felulet += szoba.festendoFelulet(mag);
             }
 
-            if (chbPlafon.Checked) txtTobbSzobaSzinesFestek.Text = osszFal + osszAlap + "";
-            else txtTobbSzobaSzinesFestek.Text = osszFal.ToString();
+
+            //double osszFal = 0;
+            //double osszAlap = 0;
+            //foreach (Control ctrl in grbSzobak.Controls)
+            //{
+            //    if (ctrl is CheckBox)
+            //    {
+            //        CheckBox chb = (CheckBox)ctrl;
+            //        if (chb.Checked)
+            //        {
+            //            Szoba szoba = Szoba.mindenSzoba[(int)chb.Tag];
+            //            osszFal += szoba.festendoFeluletAdottMagassagig(mag);
+            //            osszAlap += szoba.alapterulet();
+            //        }
+            //    }
+
+            //}
+
+            //if (chbPlafon.Checked) txtTobbSzobaSzinesFestek.Text = osszFal + osszAlap + "";
+            txtFestendoFelulet.Text = felulet.ToString();
         }
 
-        //private void chlSzobak_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    txtKivalasztottSzobak.Text = chlSzobak.CheckedIndices.Count.ToString();
-        //    szinesFestekKiirasTobbSzoba();
-        //    CheckedListBox chl = (CheckedListBox)sender;
-        //    //szobaFalGombok(chl.SelectedIndex);
-
-        //}
 
 
-
-
-        //runtime gombok
-
-        //private static int x = 700;
-        //private static Point lblKezdoPozicio = new Point(x, 10);
-        //private static Point btnKezdoPozicio = new Point(x, 30);
-        //private static Point lblPoz = lblKezdoPozicio;
-        //private static Point btnPoz = btnKezdoPozicio;
-        //private static int sorTav = 50;
-
-        //private void szobaFalGombok(int szobaIndex)
-        //{
-        //    string szobaSzam = szobaIndex.ToString();
-
-        //    int i = 0;
-        //    bool nincs = true;
-        //    while (i < Controls.Count && nincs)
-        //    {
-        //        if (Controls[i].Tag != null && Controls[i].Tag.ToString() == szobaSzam) nincs = false;
-        //        i++;
-        //    }
-
-        //    if (i >= Controls.Count)
-        //    {
-        //        gombokatKeszit(szobaIndex);
-        //    }
-        //    else
-        //    {
-        //        gombokatTorol(szobaSzam);
-
-        //    }
-        //}
-
-        //private void gombokatTorol(string szobaSzam)
-        //{
-        //    foreach (Control ctrl in this.Controls)
-        //    {
-        //        if (ctrl.Tag != null && ctrl.Tag.ToString() == szobaSzam) Controls.Remove(ctrl);
-        //    }
-        //}
-
-        //private void gombokatKeszit(int szobaIndex)
-        //{
-        //    Szoba szoba = Szoba.mindenSzoba[szobaIndex];
-        //    Label lbl = new Label();
-        //    lbl.Location = lblPoz;
-        //    lbl.Size = new Size(80, 20);
-        //    lblPoz.Y += sorTav;
-        //    lbl.Text = szoba.Nev;
-        //    lbl.Tag = szobaIndex;
-        //    this.Controls.Add(lbl);
-
-        //    foreach (var fal in szoba.falakEgyesevel())
-        //    {
-        //        Button btn = new Button();
-        //        btn.Text = fal.ToString();
-        //        btn.Location = btnPoz;
-        //        btnPoz.X += 43;
-        //        btn.Size = new Size(40, 25);
-        //        btn.Tag = szobaIndex;
-        //        Controls.Add(btn);
-        //    }
-        //    btnPoz.X = btnKezdoPozicio.X;
-        //    btnPoz.Y += sorTav;
-        //}
 
         private void chbPlafon_CheckedChanged(object sender, EventArgs e)
         {
-            szinesFestekKiirasTobbSzoba();
+            festeketSzamol();
         }
 
         private void chbMindenSzoba_CheckedChanged(object sender, EventArgs e)
         {
+            if (!chbMindenSzoba.Checked) chbPlafon.Checked = false;
+            chbPlafon.Enabled = chbMindenSzoba.Checked;
             foreach (Control ctrl in grbSzobak.Controls)
             {
                 if (ctrl is CheckBox) ((CheckBox)ctrl).Checked = chbMindenSzoba.Checked;

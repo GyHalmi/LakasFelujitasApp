@@ -41,30 +41,24 @@
             this.txtSzelesseg = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtSzinesFestek = new System.Windows.Forms.TextBox();
             this.txtOsszFal = new System.Windows.Forms.TextBox();
             this.cmbSzoba = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numMagassag = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label13 = new System.Windows.Forms.Label();
-            this.numTobbSzobaMagassag = new System.Windows.Forms.NumericUpDown();
+            this.numMagassag = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.chbPlafon = new System.Windows.Forms.CheckBox();
             this.chb1 = new System.Windows.Forms.CheckBox();
             this.grbSzobak = new System.Windows.Forms.GroupBox();
-            this.txtTobbSzobaSzinesFestek = new System.Windows.Forms.TextBox();
+            this.txtFestendoFelulet = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.chbMindenSzoba = new System.Windows.Forms.CheckBox();
             this.btnElozo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMagassag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTobbSzobaMagassag)).BeginInit();
             this.grbSzobak.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,13 +93,8 @@
             this.groupBox1.Controls.Add(this.txtSzelesseg);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtSzinesFestek);
             this.groupBox1.Controls.Add(this.txtOsszFal);
             this.groupBox1.Controls.Add(this.cmbSzoba);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.numMagassag);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(165, 64);
@@ -117,7 +106,7 @@
             // 
             // txtNyilasOsszfel
             // 
-            this.txtNyilasOsszfel.Location = new System.Drawing.Point(146, 316);
+            this.txtNyilasOsszfel.Location = new System.Drawing.Point(146, 264);
             this.txtNyilasOsszfel.Name = "txtNyilasOsszfel";
             this.txtNyilasOsszfel.Size = new System.Drawing.Size(100, 20);
             this.txtNyilasOsszfel.TabIndex = 18;
@@ -125,7 +114,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 319);
+            this.label11.Location = new System.Drawing.Point(16, 267);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(119, 13);
             this.label11.TabIndex = 17;
@@ -134,7 +123,7 @@
             // listNyilaszarok
             // 
             this.listNyilaszarok.FormattingEnabled = true;
-            this.listNyilaszarok.Location = new System.Drawing.Point(146, 213);
+            this.listNyilaszarok.Location = new System.Drawing.Point(146, 161);
             this.listNyilaszarok.Name = "listNyilaszarok";
             this.listNyilaszarok.Size = new System.Drawing.Size(100, 95);
             this.listNyilaszarok.TabIndex = 16;
@@ -142,7 +131,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 217);
+            this.label10.Location = new System.Drawing.Point(21, 165);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 15;
@@ -196,13 +185,6 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "szélesség:";
             // 
-            // txtSzinesFestek
-            // 
-            this.txtSzinesFestek.Location = new System.Drawing.Point(146, 186);
-            this.txtSzinesFestek.Name = "txtSzinesFestek";
-            this.txtSzinesFestek.Size = new System.Drawing.Size(100, 20);
-            this.txtSzinesFestek.TabIndex = 8;
-            // 
             // txtOsszFal
             // 
             this.txtOsszFal.Location = new System.Drawing.Point(146, 132);
@@ -217,40 +199,6 @@
             this.cmbSzoba.Name = "cmbSzoba";
             this.cmbSzoba.Size = new System.Drawing.Size(121, 21);
             this.cmbSzoba.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 189);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "színezett fal:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(221, 162);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "cm";
-            // 
-            // numMagassag
-            // 
-            this.numMagassag.Location = new System.Drawing.Point(146, 160);
-            this.numMagassag.Name = "numMagassag";
-            this.numMagassag.Size = new System.Drawing.Size(69, 20);
-            this.numMagassag.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 162);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "színezett magasság:";
             // 
             // label3
             // 
@@ -279,12 +227,12 @@
             this.label13.TabIndex = 21;
             this.label13.Text = "cm";
             // 
-            // numTobbSzobaMagassag
+            // numMagassag
             // 
-            this.numTobbSzobaMagassag.Location = new System.Drawing.Point(593, 46);
-            this.numTobbSzobaMagassag.Name = "numTobbSzobaMagassag";
-            this.numTobbSzobaMagassag.Size = new System.Drawing.Size(69, 20);
-            this.numTobbSzobaMagassag.TabIndex = 20;
+            this.numMagassag.Location = new System.Drawing.Point(593, 46);
+            this.numMagassag.Name = "numMagassag";
+            this.numMagassag.Size = new System.Drawing.Size(69, 20);
+            this.numMagassag.TabIndex = 20;
             // 
             // label14
             // 
@@ -298,11 +246,11 @@
             // chbPlafon
             // 
             this.chbPlafon.AutoSize = true;
-            this.chbPlafon.Location = new System.Drawing.Point(715, 47);
+            this.chbPlafon.Location = new System.Drawing.Point(566, 101);
             this.chbPlafon.Name = "chbPlafon";
-            this.chbPlafon.Size = new System.Drawing.Size(86, 17);
+            this.chbPlafon.Size = new System.Drawing.Size(101, 17);
             this.chbPlafon.TabIndex = 26;
-            this.chbPlafon.Text = "plafon festés";
+            this.chbPlafon.Text = "plafonnal együtt";
             this.chbPlafon.UseVisualStyleBackColor = true;
             this.chbPlafon.CheckedChanged += new System.EventHandler(this.chbPlafon_CheckedChanged);
             // 
@@ -326,12 +274,12 @@
             this.grbSzobak.TabStop = false;
             this.grbSzobak.Text = "Festendő szobák";
             // 
-            // txtTobbSzobaSzinesFestek
+            // txtFestendoFelulet
             // 
-            this.txtTobbSzobaSzinesFestek.Location = new System.Drawing.Point(593, 72);
-            this.txtTobbSzobaSzinesFestek.Name = "txtTobbSzobaSzinesFestek";
-            this.txtTobbSzobaSzinesFestek.Size = new System.Drawing.Size(100, 20);
-            this.txtTobbSzobaSzinesFestek.TabIndex = 23;
+            this.txtFestendoFelulet.Location = new System.Drawing.Point(593, 72);
+            this.txtFestendoFelulet.Name = "txtFestendoFelulet";
+            this.txtFestendoFelulet.Size = new System.Drawing.Size(100, 20);
+            this.txtFestendoFelulet.TabIndex = 23;
             // 
             // label12
             // 
@@ -373,10 +321,10 @@
             this.Controls.Add(this.chbMindenSzoba);
             this.Controls.Add(this.grbSzobak);
             this.Controls.Add(this.chbPlafon);
-            this.Controls.Add(this.txtTobbSzobaSzinesFestek);
+            this.Controls.Add(this.txtFestendoFelulet);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.numTobbSzobaMagassag);
+            this.Controls.Add(this.numMagassag);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.pictureBox1);
@@ -387,7 +335,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMagassag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTobbSzobaMagassag)).EndInit();
             this.grbSzobak.ResumeLayout(false);
             this.grbSzobak.PerformLayout();
             this.ResumeLayout(false);
@@ -401,14 +348,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numMagassag;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ComboBox cmbSzoba;
-        private System.Windows.Forms.TextBox txtSzinesFestek;
         private System.Windows.Forms.TextBox txtOsszFal;
         private System.Windows.Forms.TextBox txtAlapter;
         private System.Windows.Forms.Label label9;
@@ -421,12 +363,12 @@
         private System.Windows.Forms.TextBox txtNyilasOsszfel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numTobbSzobaMagassag;
+        private System.Windows.Forms.NumericUpDown numMagassag;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox chbPlafon;
         private System.Windows.Forms.CheckBox chb1;
         private System.Windows.Forms.GroupBox grbSzobak;
-        private System.Windows.Forms.TextBox txtTobbSzobaSzinesFestek;
+        private System.Windows.Forms.TextBox txtFestendoFelulet;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chbMindenSzoba;
         private System.Windows.Forms.Button btnElozo;

@@ -10,15 +10,19 @@ namespace LakasFelujitasApp
     {
         public double Szelesseg { get; set; }
         public double Magassag { get; set; }
+        public double BeepitesiMagassag { get; set; }
         public double SzegolecKorrekcio { get; set; }
 
-        public Nyilaszaro(double szelesseg, double magassag, double szegolecKorrekcio)
+
+        public Nyilaszaro(double szelesseg, double magassag, double beepitesiMagassag, double szegolecKorrekcio)
         {
             Szelesseg = szelesseg;
             Magassag = magassag;
+            BeepitesiMagassag = beepitesiMagassag;
             SzegolecKorrekcio = szegolecKorrekcio;
         }
-        public Nyilaszaro(double szelesseg, double magassag): this(szelesseg, magassag,0)
+
+        public Nyilaszaro(double szelesseg, double magassag): this(szelesseg, magassag,1,0)
         {
             ;
         }
@@ -27,6 +31,7 @@ namespace LakasFelujitasApp
         {
             return Szelesseg * Magassag;
         }
+
 
     }
 }
