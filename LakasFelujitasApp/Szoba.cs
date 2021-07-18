@@ -20,14 +20,6 @@ namespace LakasFelujitasApp
         public double KiesoHossz { get; set; }
 
         public List<Fal> Falak;
-        //public Fal A { get; set; }
-        //public Fal B { get; set; }
-        //public Fal C { get; set; }
-        //public Fal D { get; set; }
-        //public Fal E { get; set; }
-        //public Fal F { get; set; }
-
-        public List<Nyilaszaro> Nyilaszarok;
 
         public Szoba(string nev, double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double magassag)
         {
@@ -38,7 +30,6 @@ namespace LakasFelujitasApp
             KiesoSzelesseg = kiesoSzelesseg;
             KiesoHossz = kiesoHossz;
             mindenSzoba.Add(this);
-            Nyilaszarok = new List<Nyilaszaro>();
 
             Falak = new List<Fal>() { new Fal(szelesseg), new Fal(hossz), new Fal(szelesseg - kiesoSzelesseg), new Fal(kiesoHossz), new Fal(kiesoSzelesseg), new Fal(hossz - kiesoHossz) };
 
@@ -57,7 +48,6 @@ namespace LakasFelujitasApp
         {
             ;
         }
-
         public Szoba(string nev, double szelesseg, double hossz) : this(nev, szelesseg, hossz, 0, 0, alapMagassag)
         {
             ;
@@ -79,25 +69,24 @@ namespace LakasFelujitasApp
             return kerulet() * Magassag + alapterulet();
         }
 
-        public double nyilaszarokFelulete()
+        public List<Nyilaszaro> nyilaszarok()
         {
-            double osszfelulet = 0;
-            foreach (var ny in Nyilaszarok)
+            List<Nyilaszaro> nyil = new List<Nyilaszaro>();
+            foreach (var f in Falak)
             {
-                osszfelulet += ny.felulet();
+                nyil.AddRange(f.Nyilaszarok);
             }
-            return osszfelulet;
+            return nyil;
         }
 
-        public double festendoFeluletPlafonnal()
+        public double osszFalfelulet()
         {
+            double ossz = 0;
+            foreach (var f in Falak)
+            {
+                f.f
+            }
             return Math.Round(falFeluletPlafonnal() - nyilaszarokFelulete(), 2);
-        }
-
-        public double festendoFeluletAdottMagassagig(double magassag)
-        {
-            if (magassag > Magassag) magassag = Magassag;
-            return kerulet() * magassag - nyilaszarokFelulete();
         }
 
         public double festendoFelulet(double magassag)
@@ -116,16 +105,6 @@ namespace LakasFelujitasApp
                 }
             }
             return felulet;
-        }
-
-        public double szegolec()
-        {
-            double korr = 0;
-            foreach (var nyil in Nyilaszarok)
-            {
-                korr += nyil.SzegolecKorrekcio;
-            }
-            return Math.Round(kerulet() + korr, 2);
         }
 
         public Point[] alaprajz()
@@ -155,22 +134,6 @@ namespace LakasFelujitasApp
             Point[] pontok = { kezdo, p1, p2, p3, p4, p5 };
 
             return pontok;
-        }
-        public List<double> falakEgyesevel()
-        {
-            List<double> falak = new List<double>() { Szelesseg, Hossz };
-            if (KiesoHossz == 0 && KiesoSzelesseg == 0)
-            {
-                falak.AddRange(falak);
-            }
-            else
-            {
-                falak.Add(Szelesseg - KiesoSzelesseg);
-                falak.Add(KiesoHossz);
-                falak.Add(KiesoSzelesseg);
-                falak.Add(Hossz - KiesoHossz);
-            }
-            return falak;
         }
 
         public void falakatFest(bool b)

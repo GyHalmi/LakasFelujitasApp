@@ -38,7 +38,8 @@ namespace LakasFelujitasApp
                  "\na faltagkiolvasó saját FormatException-t majd tesztelni" +
                 "\n\nnincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
                 "\n!! a nyilászárók nincsenek falakhoz rendelve !!" +
-                "\n a beépítési magasság mindhol = 1");
+                "\n a beépítési magasság mindhol = 1" +
+                "\n Form1.szobakatLetrehoz nyilaszarokat a falkhoz!");
         }
 
 
@@ -58,31 +59,31 @@ namespace LakasFelujitasApp
             Szoba halo = new Szoba("halo", 3.75, 3.1, 0.4, 0.4);
 
             //belso nyilaszarok
-            Nyilaszaro kamraAjto = new Nyilaszaro(.73, 2);
-            Nyilaszaro wcAjto = new Nyilaszaro(.73, 2);
-            Nyilaszaro furdoAjto = new Nyilaszaro(.73, 2);
+            Nyilaszaro kamraAjto = new Nyilaszaro(.73, 2, 1);
+            Nyilaszaro wcAjto = new Nyilaszaro(.73, 2, 1);
+            Nyilaszaro furdoAjto = new Nyilaszaro(.73, 2, 1);
 
-            Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, 1, -1);
-            Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, 1, -.97);
-            Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, 1, -.97);
+            Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, 1);
+            Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, 1);
+            Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, 1);
 
-            Nyilaszaro konyhaAjto = new Nyilaszaro(.93, 2);
+            Nyilaszaro konyhaAjto = new Nyilaszaro(.93, 2, 1);
 
             //kulso nyilaszarok
-            Nyilaszaro konyhaAblak = new Nyilaszaro(1.3, 1.43);
-            Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, 1, (2 * 0.14));
-            Nyilaszaro nappaliAblak = new Nyilaszaro(1.35, 1.5);
-            Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, 1, (2 * 0.18 - 0.97));
-            Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1, (2 * 0.18 - 1.34));
-            Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59);
+            Nyilaszaro konyhaAblak = new Nyilaszaro(1.3, 1.43, 1);
+            Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, 1);
+            Nyilaszaro nappaliAblak = new Nyilaszaro(1.35, 1.5, 1);
+            Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, 1);
+            Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1);
+            Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59, 1);
 
             //nyilaszarokat szobakhoz rendel
-            kamra.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
-            konyha.Nyilaszarok.AddRange(new List<Nyilaszaro>() { konyhaAblak, konyhaAjto });
-            folyoso.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAjto, wcAjto, furdoAjto, nappaliAjto, haloAjto, konyhaAjto });
-            halo.Nyilaszarok.AddRange(new List<Nyilaszaro>() { haloAjto, haloAblak });
-            nappali.Nyilaszarok.AddRange(new List<Nyilaszaro>() { nappaliAblak, nappaliErkelyAjto, nappaliAjto });
-            baba.Nyilaszarok.AddRange(new List<Nyilaszaro>() { babaAjto, babaErkelyAjto });
+            //kamra.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
+            //konyha.Nyilaszarok.AddRange(new List<Nyilaszaro>() { konyhaAblak, konyhaAjto });
+            //folyoso.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAjto, wcAjto, furdoAjto, nappaliAjto, haloAjto, konyhaAjto });
+            //halo.Nyilaszarok.AddRange(new List<Nyilaszaro>() { haloAjto, haloAblak });
+            //nappali.Nyilaszarok.AddRange(new List<Nyilaszaro>() { nappaliAblak, nappaliErkelyAjto, nappaliAjto });
+            //baba.Nyilaszarok.AddRange(new List<Nyilaszaro>() { babaAjto, babaErkelyAjto });
 
         }
         private void listakatFeltolt()
@@ -113,14 +114,16 @@ namespace LakasFelujitasApp
             txtSzelesseg.Text = sz.Szelesseg + "";
             txtHossz.Text = sz.Hossz.ToString();
             txtAlapter.Text = sz.alapterulet().ToString();
-            txtOsszFal.Text = sz.festendoFeluletPlafonnal().ToString();
+            txtOsszFal.Text = sz.osszFalfelulet().ToString();
             listNyilaszarok.Items.Clear();
-            foreach (var ny in sz.Nyilaszarok)
+            double nyilaszarokFelulete = 0;
+            foreach (var ny in sz.nyilaszarok())
             {
-                listNyilaszarok.Items.Add($"{ny.Szelesseg} x {ny.Magassag}");
+                listNyilaszarok.Items.Add($"{ ny.Szelesseg} x {ny.Magassag}");
+                nyilaszarokFelulete += ny.Szelesseg * ny.Magassag;
             }
 
-            txtNyilasOsszfel.Text = sz.nyilaszarokFelulete().ToString();
+            txtNyilasOsszfel.Text = nyilaszarokFelulete.ToString();
             rajzol(sz.alaprajz());
         }
         private void rajzol(Point[] koordinatak)

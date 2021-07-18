@@ -18,5 +18,10 @@ namespace LakasFelujitasApp
             Nyilaszarok = new List<Nyilaszaro>();
             Festendo = false;
         }
+
+        public void nyilaszarotHozzaad(double szelesseg, double magassag, double beepitesiMagassag)
+        {
+            Nyilaszarok.Add(new Nyilaszaro(szelesseg, magassag, beepitesiMagassag));
+        }
     }
 }
