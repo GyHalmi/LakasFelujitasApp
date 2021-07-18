@@ -33,7 +33,7 @@ namespace LakasFelujitasApp
             chbPlafon.Enabled = false;
             MessageBox.Show(
                 "\n  festekeSzamol() ellenorzés (nyilaszarok levonódnak?)" +
-                "\n\tplafon számolás" +
+                "\n\tplafon számolás, RÉSzlegesFalfestés " +
                  "\n\tnyilászáro hozzarandelés, falgombok működése(\n" +
                  "\na faltagkiolvasó saját FormatException-t majd tesztelni" +
                 "\n\nnincs kezdő alaprajz -> load eventben nem lehet rajzolni" +

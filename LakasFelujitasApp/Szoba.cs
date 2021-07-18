@@ -31,7 +31,7 @@ namespace LakasFelujitasApp
             KiesoHossz = kiesoHossz;
             mindenSzoba.Add(this);
 
-            Falak = new List<Fal>() { new Fal(szelesseg), new Fal(hossz), new Fal(szelesseg - kiesoSzelesseg), new Fal(kiesoHossz), new Fal(kiesoSzelesseg), new Fal(hossz - kiesoHossz) };
+            Falak = new List<Fal>() { new Fal(szelesseg,magassag), new Fal(hossz,magassag), new Fal(szelesseg - kiesoSzelesseg, magassag), new Fal(kiesoHossz, magassag), new Fal(kiesoSzelesseg, magassag), new Fal(hossz - kiesoHossz, magassag) };
 
             bool nullaSzelesseg(Fal f)
             {
@@ -55,18 +55,11 @@ namespace LakasFelujitasApp
 
         public double alapterulet()
         {
-            double alap = Szelesseg * Hossz - KiesoSzelesseg * KiesoHossz;
-            return Math.Round(alap, 2);
+            return Szelesseg * Hossz - KiesoSzelesseg * KiesoHossz;
         }
         public double kerulet()
         {
-            double ker = Szelesseg * 2 + Hossz * 2;
-            return Math.Round(ker, 2);
-        }
-
-        public double falFeluletPlafonnal()
-        {
-            return kerulet() * Magassag + alapterulet();
+            return Szelesseg * 2 + Hossz * 2;
         }
 
         public List<Nyilaszaro> nyilaszarok()
@@ -82,29 +75,26 @@ namespace LakasFelujitasApp
         public double osszFalfelulet()
         {
             double ossz = 0;
+            bool allapot = false;
             foreach (var f in Falak)
             {
-                f.f
+                allapot = f.Festendo;
+                f.Festendo = true;
+                ossz += f.reszlegesFalfestes(f.Magassag);
+                f.Festendo = allapot;
             }
-            return Math.Round(falFeluletPlafonnal() - nyilaszarokFelulete(), 2);
+            return ossz + alapterulet();
         }
 
         public double festendoFelulet(double magassag)
         {
-            if (magassag > Magassag) magassag = Magassag;
-            double felulet = 0;
-            foreach (var fal in Falak)
+            double ossz = 0;
+            foreach (var f in Falak)
             {
-                if (fal.Festendo)
-                {
-                    felulet += fal.Szelesseg * magassag;
-                    foreach (var ny in fal.Nyilaszarok)
-                    {
-                        if (magassag > ny.BeepitesiMagassag) felulet -= ny.Szelesseg * (magassag - ny.BeepitesiMagassag);
-                    } 
-                }
+                ossz += f.reszlegesFalfestes(magassag);
             }
-            return felulet;
+
+            return ossz;
         }
 
         public Point[] alaprajz()
