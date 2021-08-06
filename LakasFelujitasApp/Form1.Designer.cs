@@ -56,6 +56,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.chbMindenSzoba = new System.Windows.Forms.CheckBox();
             this.btnElozo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMagassag)).BeginInit();
@@ -64,7 +65,7 @@
             // 
             // btnKovetkezo
             // 
-            this.btnKovetkezo.Location = new System.Drawing.Point(205, 12);
+            this.btnKovetkezo.Location = new System.Drawing.Point(280, 13);
             this.btnKovetkezo.Name = "btnKovetkezo";
             this.btnKovetkezo.Size = new System.Drawing.Size(75, 23);
             this.btnKovetkezo.TabIndex = 0;
@@ -303,7 +304,7 @@
             // 
             // btnElozo
             // 
-            this.btnElozo.Location = new System.Drawing.Point(114, 11);
+            this.btnElozo.Location = new System.Drawing.Point(189, 12);
             this.btnElozo.Name = "btnElozo";
             this.btnElozo.Size = new System.Drawing.Size(75, 23);
             this.btnElozo.TabIndex = 32;
@@ -312,11 +313,21 @@
             this.btnElozo.UseVisualStyleBackColor = true;
             this.btnElozo.Click += new System.EventHandler(this.btnVisszaTovabb);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(28, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "szobákat létrehoz";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 498);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnElozo);
             this.Controls.Add(this.chbMindenSzoba);
             this.Controls.Add(this.grbSzobak);
@@ -372,6 +383,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chbMindenSzoba;
         private System.Windows.Forms.Button btnElozo;
+        private System.Windows.Forms.Button button1;
     }
 }
 

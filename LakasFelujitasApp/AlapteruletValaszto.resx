@@ -117,26 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="szabalyos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalyos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="szabalytalan2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalytalan2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="szabalyos3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalyos3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="szabalytalan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalytalan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="szabalytalan3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalytalan3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="szabalyos2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\szabalyos2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nyilas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nyilas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

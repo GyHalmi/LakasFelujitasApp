@@ -10,15 +10,15 @@ namespace LakasFelujitasApp
     {
         public double Szelesseg { get; set; }
         public double Magassag { get; set; }
-        public List<Nyilaszaro> Nyilaszarok { get; set; }
         public bool Festendo { get; set; }
+        public List<Nyilaszaro> Nyilaszarok { get; set; }
 
         public Fal(double szelesseg, double magassag)
         {
             Szelesseg = szelesseg;
             Magassag = magassag;
-            Nyilaszarok = new List<Nyilaszaro>();
             Festendo = false;
+            Nyilaszarok = new List<Nyilaszaro>();
         }
 
         public void nyilaszarotHozzaad(double szelesseg, double magassag, double beepitesiMagassag)
@@ -37,7 +37,30 @@ namespace LakasFelujitasApp
                 felulet += Szelesseg * (felsoHatar - alsoHatar);
                 foreach (var ny in Nyilaszarok)
                 {
-                    if (felsoHatar > ny.BeepitesiMagassag) felulet -= ny.Szelesseg * (felsoHatar - ny.BeepitesiMagassag);
+                    double nyilasAlja = ny.BeepitesiMagassag;
+                    double nyilasTeteje = ny.BeepitesiMagassag + ny.Magassag;
+
+                    bool nyilasMagassagban(double festesiHatar)
+                    {
+                        return festesiHatar > nyilasAlja && festesiHatar < nyilasTeteje;
+                    }
+               
+                    if (nyilasMagassagban(felsoHatar) && nyilasMagassagban(alsoHatar))
+                    {
+                        felulet -= (felsoHatar - alsoHatar) * ny.Szelesseg;
+                    }
+                    else if (nyilasMagassagban(felsoHatar))
+                    {
+                        felulet -= (felsoHatar - nyilasAlja) * ny.Szelesseg;
+                    }
+                    else if(nyilasMagassagban(alsoHatar))
+                    {
+                        felulet -= (nyilasTeteje - alsoHatar) * ny.Szelesseg;
+                    }
+                    else if(felsoHatar> nyilasTeteje && alsoHatar< nyilasAlja)
+                    {
+                        felulet -= ny.felulet();
+                    }
                 }
             }
 

@@ -15,23 +15,23 @@ namespace LakasFelujitasApp
         public string Nev { get; set; }
         public double Szelesseg { get; set; }
         public double Hossz { get; set; }
-        public double Magassag { get; set; }
+        public double FesthetoMagassag { get; set; }
         public double KiesoSzelesseg { get; set; }
         public double KiesoHossz { get; set; }
 
         public List<Fal> Falak;
 
-        public Szoba(string nev, double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double magassag)
+        public Szoba(string nev, double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double festhetoMagassag)
         {
             Nev = nev;
             Szelesseg = szelesseg;
             Hossz = hossz;
-            Magassag = magassag;
+            FesthetoMagassag = festhetoMagassag;
             KiesoSzelesseg = kiesoSzelesseg;
             KiesoHossz = kiesoHossz;
             mindenSzoba.Add(this);
 
-            Falak = new List<Fal>() { new Fal(szelesseg,magassag), new Fal(hossz,magassag), new Fal(szelesseg - kiesoSzelesseg, magassag), new Fal(kiesoHossz, magassag), new Fal(kiesoSzelesseg, magassag), new Fal(hossz - kiesoHossz, magassag) };
+            Falak = new List<Fal>() { new Fal(szelesseg,festhetoMagassag), new Fal(hossz,festhetoMagassag), new Fal(szelesseg - kiesoSzelesseg, festhetoMagassag), new Fal(kiesoHossz, festhetoMagassag), new Fal(kiesoSzelesseg, festhetoMagassag), new Fal(hossz - kiesoHossz, festhetoMagassag) };
 
             bool nullaSzelesseg(Fal f)
             {
