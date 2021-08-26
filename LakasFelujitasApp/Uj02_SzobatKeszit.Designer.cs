@@ -1,6 +1,6 @@
 ﻿namespace LakasFelujitasApp
 {
-    partial class SzobatKeszit
+    partial class Uj02_SzobatKeszit
     {
         /// <summary>
         /// Required designer variable.
@@ -30,23 +30,26 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblKiesoSzelesseg = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblKiesoHosszusag = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMagassag = new System.Windows.Forms.TextBox();
             this.txtSzelesseg = new System.Windows.Forms.TextBox();
             this.txtHosszusag = new System.Windows.Forms.TextBox();
             this.txtKiesoSzelesseg = new System.Windows.Forms.TextBox();
             this.txtKiesoHosszusag = new System.Windows.Forms.TextBox();
-            this.btnKesz = new System.Windows.Forms.Button();
+            this.btnSzobaMeretezve = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.panelKieso = new System.Windows.Forms.Panel();
+            this.btnVissza = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelKieso.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LakasFelujitasApp.Properties.Resources.szabalytalan2;
+            this.pictureBox1.Image = global::LakasFelujitasApp.Properties.Resources.szabalytalan_meretezve;
             this.pictureBox1.Location = new System.Drawing.Point(40, 57);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(281, 180);
@@ -62,14 +65,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "szélesség";
             // 
-            // label2
+            // lblKiesoSzelesseg
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 163);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "kieső szélesség";
+            this.lblKiesoSzelesseg.AutoSize = true;
+            this.lblKiesoSzelesseg.Location = new System.Drawing.Point(-3, 4);
+            this.lblKiesoSzelesseg.Name = "lblKiesoSzelesseg";
+            this.lblKiesoSzelesseg.Size = new System.Drawing.Size(81, 13);
+            this.lblKiesoSzelesseg.TabIndex = 2;
+            this.lblKiesoSzelesseg.Text = "kieső szélesség";
             // 
             // label3
             // 
@@ -80,14 +83,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "hosszúság";
             // 
-            // label4
+            // lblKiesoHosszusag
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(373, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "kieső hosszúság";
+            this.lblKiesoHosszusag.AutoSize = true;
+            this.lblKiesoHosszusag.Location = new System.Drawing.Point(-3, 32);
+            this.lblKiesoHosszusag.Name = "lblKiesoHosszusag";
+            this.lblKiesoHosszusag.Size = new System.Drawing.Size(85, 13);
+            this.lblKiesoHosszusag.TabIndex = 4;
+            this.lblKiesoHosszusag.Text = "kieső hosszúság";
             // 
             // label5
             // 
@@ -96,6 +99,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 13);
             this.label5.TabIndex = 5;
+            this.label5.Tag = "";
             this.label5.Text = "festhető belmagasság";
             // 
             // txtMagassag
@@ -121,27 +125,28 @@
             // 
             // txtKiesoSzelesseg
             // 
-            this.txtKiesoSzelesseg.Location = new System.Drawing.Point(508, 160);
+            this.txtKiesoSzelesseg.Location = new System.Drawing.Point(132, 1);
             this.txtKiesoSzelesseg.Name = "txtKiesoSzelesseg";
             this.txtKiesoSzelesseg.Size = new System.Drawing.Size(66, 20);
             this.txtKiesoSzelesseg.TabIndex = 9;
             // 
             // txtKiesoHosszusag
             // 
-            this.txtKiesoHosszusag.Location = new System.Drawing.Point(508, 188);
+            this.txtKiesoHosszusag.Location = new System.Drawing.Point(132, 29);
             this.txtKiesoHosszusag.Name = "txtKiesoHosszusag";
             this.txtKiesoHosszusag.Size = new System.Drawing.Size(66, 20);
             this.txtKiesoHosszusag.TabIndex = 10;
             // 
-            // btnKesz
+            // btnSzobaMeretezve
             // 
-            this.btnKesz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnKesz.Location = new System.Drawing.Point(176, 263);
-            this.btnKesz.Name = "btnKesz";
-            this.btnKesz.Size = new System.Drawing.Size(259, 41);
-            this.btnKesz.TabIndex = 11;
-            this.btnKesz.Text = "Nyilászárók, nyílások hozzáadása";
-            this.btnKesz.UseVisualStyleBackColor = true;
+            this.btnSzobaMeretezve.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSzobaMeretezve.Location = new System.Drawing.Point(248, 260);
+            this.btnSzobaMeretezve.Name = "btnSzobaMeretezve";
+            this.btnSzobaMeretezve.Size = new System.Drawing.Size(259, 41);
+            this.btnSzobaMeretezve.TabIndex = 11;
+            this.btnSzobaMeretezve.Text = "Nyilászárók, nyílások hozzáadása";
+            this.btnSzobaMeretezve.UseVisualStyleBackColor = true;
+            this.btnSzobaMeretezve.Click += new System.EventHandler(this.btnSzobaMeretezve_Click);
             // 
             // label6
             // 
@@ -153,27 +158,48 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "a méretek megadása MÉTERben szükséges";
             // 
-            // SzobatKeszit
+            // panelKieso
+            // 
+            this.panelKieso.Controls.Add(this.lblKiesoSzelesseg);
+            this.panelKieso.Controls.Add(this.lblKiesoHosszusag);
+            this.panelKieso.Controls.Add(this.txtKiesoSzelesseg);
+            this.panelKieso.Controls.Add(this.txtKiesoHosszusag);
+            this.panelKieso.Location = new System.Drawing.Point(376, 158);
+            this.panelKieso.Name = "panelKieso";
+            this.panelKieso.Size = new System.Drawing.Size(198, 51);
+            this.panelKieso.TabIndex = 13;
+            // 
+            // btnVissza
+            // 
+            this.btnVissza.Location = new System.Drawing.Point(126, 260);
+            this.btnVissza.Name = "btnVissza";
+            this.btnVissza.Size = new System.Drawing.Size(104, 41);
+            this.btnVissza.TabIndex = 14;
+            this.btnVissza.Text = "Vissza";
+            this.btnVissza.UseVisualStyleBackColor = true;
+            this.btnVissza.Click += new System.EventHandler(this.btnVissza_Click);
+            // 
+            // Uj02_SzobatKeszit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 332);
+            this.ClientSize = new System.Drawing.Size(610, 343);
+            this.Controls.Add(this.btnVissza);
+            this.Controls.Add(this.panelKieso);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnKesz);
-            this.Controls.Add(this.txtKiesoHosszusag);
-            this.Controls.Add(this.txtKiesoSzelesseg);
+            this.Controls.Add(this.btnSzobaMeretezve);
             this.Controls.Add(this.txtHosszusag);
             this.Controls.Add(this.txtSzelesseg);
             this.Controls.Add(this.txtMagassag);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "SzobatKeszit";
+            this.Name = "Uj02_SzobatKeszit";
             this.Text = "SzobatKeszit";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelKieso.ResumeLayout(false);
+            this.panelKieso.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,16 +209,18 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblKiesoSzelesseg;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblKiesoHosszusag;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMagassag;
         private System.Windows.Forms.TextBox txtSzelesseg;
         private System.Windows.Forms.TextBox txtHosszusag;
         private System.Windows.Forms.TextBox txtKiesoSzelesseg;
         private System.Windows.Forms.TextBox txtKiesoHosszusag;
-        private System.Windows.Forms.Button btnKesz;
+        private System.Windows.Forms.Button btnSzobaMeretezve;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panelKieso;
+        private System.Windows.Forms.Button btnVissza;
     }
 }

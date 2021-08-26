@@ -63,9 +63,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nyilas {
+        internal static System.Drawing.Bitmap nyilas_meretezve {
             get {
-                object obj = ResourceManager.GetObject("nyilas", resourceCulture);
+                object obj = ResourceManager.GetObject("nyilas_meretezve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalyos {
+        internal static System.Drawing.Bitmap szabalyos_meretezve {
             get {
-                object obj = ResourceManager.GetObject("szabalyos", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalyos_meretezve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalyos2 {
+        internal static System.Drawing.Bitmap szabalyos_sima {
             get {
-                object obj = ResourceManager.GetObject("szabalyos2", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalyos_sima", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalyos3 {
+        internal static System.Drawing.Bitmap szabalyos_szamozva {
             get {
-                object obj = ResourceManager.GetObject("szabalyos3", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalyos_szamozva", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalytalan {
+        internal static System.Drawing.Bitmap szabalytalan_meretezve {
             get {
-                object obj = ResourceManager.GetObject("szabalytalan", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalytalan_meretezve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalytalan2 {
+        internal static System.Drawing.Bitmap szabalytalan_sima {
             get {
-                object obj = ResourceManager.GetObject("szabalytalan2", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalytalan_sima", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace LakasFelujitasApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap szabalytalan3 {
+        internal static System.Drawing.Bitmap szabalytalan_szamozva {
             get {
-                object obj = ResourceManager.GetObject("szabalytalan3", resourceCulture);
+                object obj = ResourceManager.GetObject("szabalytalan_szamozva", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -22,8 +22,6 @@ namespace LakasFelujitasApp
             szobakatLetrehoz();
             listakatFeltolt();
             pictureBox1.BackColor = Color.White;
-            cmbSzoba.SelectedIndexChanged += cmbSzoba_SelectedIndexChanged;
-            //cmbSzoba.SelectedIndex = 0;
 
             //jobb oldal
             szobaCheckBoxok_FalGombok();
@@ -31,17 +29,29 @@ namespace LakasFelujitasApp
             numMagassag.Value = 200;
             numMagassag.ValueChanged += numMagassag_ValueChanged;
             chbPlafon.Enabled = false;
-            MessageBox.Show(
-                "\n  festekeSzamol() ellenorzés (nyilaszarok levonódnak?)" +
-                "\n\tplafon számolás, RÉSzlegesFalfestés " +
-                 "\n\tnyilászáro hozzarandelés, falgombok működése(\n" +
-                 "\na faltagkiolvasó saját FormatException-t majd tesztelni" +
-                "\n\nnincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
-                "\n!! a nyilászárók nincsenek falakhoz rendelve !!" +
-                "\n a beépítési magasság mindhol = 1" +
-                "\n Form1.szobakatLetrehoz nyilaszarokat a falkhoz!");
-        }
 
+            this.Shown += Form_Shown;
+
+            MessageBox.Show(
+                "\n új szoba készítés!" +
+                "\n //txt értékek átadása szoba.meretekMegadasa() // kéne egy string paraméteres verzió is / Eszkozok osztaly lehet nem is kell majd" +
+                "\n  visszalépő gombok készítése, szintén az objektumból olvas" +
+                "\n  elkészült szobák tárolása file-ban!" +
+                "\n  aktuális formot bezár, következőt nyit" +
+                "\n  a festhető magasság megadott 0 esetén 1 lesz" +
+                "\n\nplafon számolás, RÉSzlegesFalfestés " +
+                 "\nnyilászáro hozzarandelés, falgombok működése(\n" +
+                 "\n\na faltagkiolvasó saját FormatException-t majd tesztelni" +
+                "\n\n//nincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
+                "\n\tshown rajzol, de egyből eltűnik.." +
+                "\n\n(a beépítési magasság mindhol = 1)" +
+                "");
+        }
+        private void Form_Shown(Object sender, EventArgs e)
+        {
+            cmbSzoba.SelectedIndexChanged += cmbSzoba_SelectedIndexChanged;
+            cmbSzoba.SelectedIndex = 0; //kedő alaprajz
+        }
 
         //szobaInfo-s bal oldal
 
@@ -312,6 +322,11 @@ namespace LakasFelujitasApp
             {
                 if (ctrl is CheckBox) ((CheckBox)ctrl).Checked = chbMindenSzoba.Checked;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Uj01_AlapteruletValaszto().ShowDialog();
         }
     }
 

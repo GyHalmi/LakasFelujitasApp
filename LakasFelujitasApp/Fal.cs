@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LakasFelujitasApp
 {
@@ -24,6 +25,16 @@ namespace LakasFelujitasApp
         public void nyilaszarotHozzaad(double szelesseg, double magassag, double beepitesiMagassag)
         {
             Nyilaszarok.Add(new Nyilaszaro(szelesseg, magassag, beepitesiMagassag));
+        }
+        public void nyilaszarotHozzaad(TextBox szelesseg, TextBox magassag, TextBox beepitesiMagassag)
+        {
+            double txtToDouble(TextBox txt)
+            {
+                double.TryParse(txt.Text, out double d);
+                return d;
+            }
+
+            nyilaszarotHozzaad(txtToDouble(szelesseg), txtToDouble(magassag), txtToDouble(beepitesiMagassag));
         }
 
         public double reszlegesFalfestes(double alsoHatar, double felsoHatar)

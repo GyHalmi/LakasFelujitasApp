@@ -8,11 +8,13 @@ using System.Windows.Forms;
 
 namespace LakasFelujitasApp
 {
+    public enum Alapterulet { Szabalyos, Szabalytalan };
     class Szoba
     {
         public static List<Szoba> mindenSzoba = new List<Szoba>();
         private static double alapMagassag = 2.64;
         public string Nev { get; set; }
+        public Alapterulet AlapteruletTipus { get; set; }
         public double Szelesseg { get; set; }
         public double Hossz { get; set; }
         public double FesthetoMagassag { get; set; }
@@ -20,6 +22,56 @@ namespace LakasFelujitasApp
         public double KiesoHossz { get; set; }
 
         public List<Fal> Falak;
+
+      public static void szobaKesz(Szoba szoba)
+        {
+            mindenSzoba.Add(szoba);
+        }
+        public Szoba(string nev, Alapterulet alapteruletTipus)
+        {
+            Nev = nev;
+            AlapteruletTipus = alapteruletTipus;
+            Falak = new List<Fal>();
+            
+        }
+        public void meretekMegadasa(double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double festhetoMagassag)
+        {
+            if (festhetoMagassag == 0) festhetoMagassag = 1;
+            Szelesseg = szelesseg;
+            Hossz = hossz;
+            FesthetoMagassag = festhetoMagassag;
+            KiesoSzelesseg = kiesoSzelesseg;
+            KiesoHossz = kiesoHossz;
+
+            Falak = new List<Fal>() { new Fal(szelesseg, festhetoMagassag), new Fal(hossz, festhetoMagassag), new Fal(szelesseg - kiesoSzelesseg, festhetoMagassag), new Fal(kiesoHossz, festhetoMagassag), new Fal(kiesoSzelesseg, festhetoMagassag), new Fal(hossz - kiesoHossz, festhetoMagassag) };
+
+            bool nullaSzelesseg(Fal f)
+            {
+                return f.Szelesseg == 0;
+            }
+            Falak.RemoveAll(nullaSzelesseg);
+        }
+        public void meretekMegadasa(string szelesseg, string hossz, string kiesoSzelesseg, string kiesoHossz, string festhetoMagassag)
+        {
+            double strToDouble(string str)
+            {
+                double.TryParse(str, out double d);
+                return d;
+            }
+
+            meretekMegadasa(strToDouble(szelesseg), strToDouble(hossz), strToDouble(kiesoSzelesseg), strToDouble(kiesoHossz), strToDouble(festhetoMagassag));
+        }
+
+        public void meretekMegadasa(TextBox szelesseg, TextBox hossz, TextBox kiesoSzelesseg, TextBox kiesoHossz, TextBox festhetoMagassag)
+        {
+            meretekMegadasa(szelesseg.Text, hossz.Text, kiesoSzelesseg.Text, kiesoHossz.Text, festhetoMagassag.Text);
+        }
+
+        public void meretekMegadasa(double szelesseg, double hossz, double festhetoMagassag)
+        {
+            meretekMegadasa(szelesseg, hossz, 0, 0, festhetoMagassag);
+        }
+
 
         public Szoba(string nev, double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double festhetoMagassag)
         {
@@ -31,7 +83,7 @@ namespace LakasFelujitasApp
             KiesoHossz = kiesoHossz;
             mindenSzoba.Add(this);
 
-            Falak = new List<Fal>() { new Fal(szelesseg,festhetoMagassag), new Fal(hossz,festhetoMagassag), new Fal(szelesseg - kiesoSzelesseg, festhetoMagassag), new Fal(kiesoHossz, festhetoMagassag), new Fal(kiesoSzelesseg, festhetoMagassag), new Fal(hossz - kiesoHossz, festhetoMagassag) };
+            Falak = new List<Fal>() { new Fal(szelesseg, festhetoMagassag), new Fal(hossz, festhetoMagassag), new Fal(szelesseg - kiesoSzelesseg, festhetoMagassag), new Fal(kiesoHossz, festhetoMagassag), new Fal(kiesoSzelesseg, festhetoMagassag), new Fal(hossz - kiesoHossz, festhetoMagassag) };
 
             bool nullaSzelesseg(Fal f)
             {
@@ -40,6 +92,8 @@ namespace LakasFelujitasApp
             Falak.RemoveAll(nullaSzelesseg);
 
         }
+
+
         public Szoba(string nev, double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz) : this(nev, szelesseg, hossz, kiesoHossz, kiesoSzelesseg, alapMagassag)
         {
             ;
@@ -52,6 +106,8 @@ namespace LakasFelujitasApp
         {
             ;
         }
+
+
 
         public double alapterulet()
         {
@@ -70,6 +126,13 @@ namespace LakasFelujitasApp
                 nyil.AddRange(f.Nyilaszarok);
             }
             return nyil;
+        }
+        public void nyilaszarokTorles()
+        {
+            foreach (var f in Falak)
+            {
+                f.Nyilaszarok.Clear();
+            }
         }
 
         public double osszFalfelulet()
