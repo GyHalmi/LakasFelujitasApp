@@ -46,25 +46,26 @@ namespace LakasFelujitasApp
                 txtKiesoSzelesseg.Text = szoba.KiesoSzelesseg.ToString();
                 txtKiesoHosszusag.Text = szoba.KiesoHossz.ToString();
             }
+            this.Focus();
 
         }
 
         private void btnSzobaMeretezve_Click(object sender, EventArgs e)
         {
-
             szoba.meretekMegadasa(txtSzelesseg, txtHosszusag, txtKiesoSzelesseg, txtKiesoHosszusag, txtMagassag);
 
             Uj03_FalakNyilaszarok form3 = new Uj03_FalakNyilaszarok();
             form3.Tag = szoba;
-            form3.ShowDialog();
+            this.Close();
+            form3.Show();
         }
 
         private void btnVissza_Click(object sender, EventArgs e)
         {
             Uj01_AlapteruletValaszto form1 = new Uj01_AlapteruletValaszto();
             form1.Tag = szoba;
-            form1.ShowDialog();
-
+            this.Close();
+            form1.Show();
         }
     }
 }

@@ -85,17 +85,21 @@ namespace LakasFelujitasApp
             }
 
             nyilaszarokatListaz();
+            this.Focus();
         }
 
 
         private void btnKesz_Click(object sender, EventArgs e)
         {
             Szoba.szobaKesz(szoba);
+            this.Close();
         }
 
         private void btnKovetkezoSzoba_Click(object sender, EventArgs e)
         {
             Szoba.szobaKesz(szoba);
+            this.Close();
+            new Uj01_AlapteruletValaszto().Show();
         }
 
         private void btnHozzaad_Click(object sender, EventArgs e)
@@ -118,7 +122,8 @@ namespace LakasFelujitasApp
             Uj02_SzobatKeszit form2 = new Uj02_SzobatKeszit();
             szoba.nyilaszarokTorles();
             form2.Tag = szoba;
-            form2.ShowDialog();
+            form2.Show();
+            this.Close();
         }
         private void nyilaszarokatListaz()
         {

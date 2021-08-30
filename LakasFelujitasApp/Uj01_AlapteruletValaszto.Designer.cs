@@ -30,10 +30,10 @@
         {
             this.btnSzabalyos = new System.Windows.Forms.Button();
             this.btnSzabalytalan = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNev = new System.Windows.Forms.TextBox();
             this.btnTovabb = new System.Windows.Forms.Button();
+            this.gbAlapterulet = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // btnSzabalyos
@@ -53,16 +53,6 @@
             this.btnSzabalytalan.Size = new System.Drawing.Size(184, 156);
             this.btnSzabalytalan.TabIndex = 1;
             this.btnSzabalytalan.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(176, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Alapterület formája";
             // 
             // label2
             // 
@@ -88,6 +78,16 @@
             this.btnTovabb.TabIndex = 5;
             this.btnTovabb.Text = "Tovább";
             this.btnTovabb.UseVisualStyleBackColor = true;
+            this.btnTovabb.Click += new System.EventHandler(this.btnTovabb_Click);
+            // 
+            // gbAlapterulet
+            // 
+            this.gbAlapterulet.Location = new System.Drawing.Point(12, 98);
+            this.gbAlapterulet.Name = "gbAlapterulet";
+            this.gbAlapterulet.Size = new System.Drawing.Size(499, 199);
+            this.gbAlapterulet.TabIndex = 6;
+            this.gbAlapterulet.TabStop = false;
+            this.gbAlapterulet.Text = "Alapterület típusa";
             // 
             // Uj01_AlapteruletValaszto
             // 
@@ -97,9 +97,9 @@
             this.Controls.Add(this.btnTovabb);
             this.Controls.Add(this.txtNev);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSzabalytalan);
             this.Controls.Add(this.btnSzabalyos);
+            this.Controls.Add(this.gbAlapterulet);
             this.Name = "Uj01_AlapteruletValaszto";
             this.Text = "AlapteruletValaszto";
             this.ResumeLayout(false);
@@ -111,9 +111,9 @@
 
         private System.Windows.Forms.Button btnSzabalyos;
         private System.Windows.Forms.Button btnSzabalytalan;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNev;
         private System.Windows.Forms.Button btnTovabb;
+        private System.Windows.Forms.GroupBox gbAlapterulet;
     }
 }

@@ -34,10 +34,9 @@ namespace LakasFelujitasApp
 
             MessageBox.Show(
                 "\n új szoba készítés!" +
+                "\n alapeterulet típus kiválasztás láthatóvá tétele! " +
                 "\n //txt értékek átadása szoba.meretekMegadasa() // kéne egy string paraméteres verzió is / Eszkozok osztaly lehet nem is kell majd" +
-                "\n  visszalépő gombok készítése, szintén az objektumból olvas" +
                 "\n  elkészült szobák tárolása file-ban!" +
-                "\n  aktuális formot bezár, következőt nyit" +
                 "\n  a festhető magasság megadott 0 esetén 1 lesz" +
                 "\n\nplafon számolás, RÉSzlegesFalfestés " +
                  "\nnyilászáro hozzarandelés, falgombok működése(\n" +

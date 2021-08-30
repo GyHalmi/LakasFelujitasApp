@@ -19,8 +19,21 @@ namespace LakasFelujitasApp
             InitializeComponent();
             btnSzabalyos.Tag = Alapterulet.Szabalyos;
             btnSzabalytalan.Tag = Alapterulet.Szabalytalan;
-            btn_Click_MindenGomra();
+            alapterGombEvent();
             this.Shown += Uj01_AlapteruletValaszto_Shown;
+        }
+
+        private void alapterGombEvent()
+        {
+            foreach (Control c in gbAlapterulet.Controls)
+            {
+                ((Button)c).Click += btnAlapter_Click;
+            }
+        }
+        private void btnAlapter_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackgroundImageLayout = ImageLayout.Zoom;
         }
 
         private void Uj01_AlapteruletValaszto_Shown(object sender, EventArgs e)
@@ -41,26 +54,28 @@ namespace LakasFelujitasApp
                         break;
                 }
             }
+            this.Focus();
 
         }
 
-        private void btn_Click_MindenGomra()
+        private void btnTovabb_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in this.Controls)
+            Alapterulet valasztottAlapter()
             {
-                if (ctrl is Button) ctrl.Click += btn_Click;
+                int ind = 0;
+                bool talalt = false;
+                do
+                {
+                    if (((Button)gbAlapterulet.Controls[ind]).Focused) talalt = true;
+                    ind++;
+                } while (!talalt);
+                return (Alapterulet)((Button)gbAlapterulet.Controls[ind]).Tag;
             }
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-            Alapterulet szobaAlap = (Alapterulet)((Control)sender).Tag;
-            szoba = new Szoba(txtNev.Text, szobaAlap);
+            szoba = new Szoba(txtNev.Text, valasztottAlapter());
             Form form2 = new Uj02_SzobatKeszit();
             form2.Tag = szoba;
-            this.Hide();
-            form2.Show();
             this.Close();
+            form2.Show();
         }
     }
 }

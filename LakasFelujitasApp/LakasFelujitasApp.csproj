@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Eszkozok.cs" />
+    <Compile Include="Form2_SzobaKeszito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2_SzobaKeszito.Designer.cs">
+      <DependentUpon>Form2_SzobaKeszito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Uj01_AlapteruletValaszto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Uj02_SzobatKeszit.Designer.cs">
       <DependentUpon>Uj02_SzobatKeszit.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form2_SzobaKeszito.resx">
+      <DependentUpon>Form2_SzobaKeszito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Uj01_AlapteruletValaszto.resx">
       <DependentUpon>Uj01_AlapteruletValaszto.cs</DependentUpon>
     </EmbeddedResource>
