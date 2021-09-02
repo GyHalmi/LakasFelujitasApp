@@ -34,12 +34,13 @@
             this.txtNev = new System.Windows.Forms.TextBox();
             this.btnTovabb = new System.Windows.Forms.Button();
             this.gbAlapterulet = new System.Windows.Forms.GroupBox();
+            this.gbAlapterulet.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSzabalyos
             // 
             this.btnSzabalyos.Image = global::LakasFelujitasApp.Properties.Resources.szabalyos_sima;
-            this.btnSzabalyos.Location = new System.Drawing.Point(47, 124);
+            this.btnSzabalyos.Location = new System.Drawing.Point(37, 37);
             this.btnSzabalyos.Name = "btnSzabalyos";
             this.btnSzabalyos.Size = new System.Drawing.Size(184, 156);
             this.btnSzabalyos.TabIndex = 0;
@@ -48,7 +49,7 @@
             // btnSzabalytalan
             // 
             this.btnSzabalytalan.Image = global::LakasFelujitasApp.Properties.Resources.szabalytalan_sima;
-            this.btnSzabalytalan.Location = new System.Drawing.Point(292, 124);
+            this.btnSzabalytalan.Location = new System.Drawing.Point(277, 37);
             this.btnSzabalytalan.Name = "btnSzabalytalan";
             this.btnSzabalytalan.Size = new System.Drawing.Size(184, 156);
             this.btnSzabalytalan.TabIndex = 1;
@@ -82,9 +83,11 @@
             // 
             // gbAlapterulet
             // 
-            this.gbAlapterulet.Location = new System.Drawing.Point(12, 98);
+            this.gbAlapterulet.Controls.Add(this.btnSzabalyos);
+            this.gbAlapterulet.Controls.Add(this.btnSzabalytalan);
+            this.gbAlapterulet.Location = new System.Drawing.Point(12, 78);
             this.gbAlapterulet.Name = "gbAlapterulet";
-            this.gbAlapterulet.Size = new System.Drawing.Size(499, 199);
+            this.gbAlapterulet.Size = new System.Drawing.Size(499, 213);
             this.gbAlapterulet.TabIndex = 6;
             this.gbAlapterulet.TabStop = false;
             this.gbAlapterulet.Text = "Alapterület típusa";
@@ -94,14 +97,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 366);
+            this.Controls.Add(this.gbAlapterulet);
             this.Controls.Add(this.btnTovabb);
             this.Controls.Add(this.txtNev);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnSzabalytalan);
-            this.Controls.Add(this.btnSzabalyos);
-            this.Controls.Add(this.gbAlapterulet);
             this.Name = "Uj01_AlapteruletValaszto";
             this.Text = "AlapteruletValaszto";
+            this.gbAlapterulet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

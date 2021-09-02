@@ -57,6 +57,7 @@
             this.chbMindenSzoba = new System.Windows.Forms.CheckBox();
             this.btnElozo = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnFrissit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMagassag)).BeginInit();
@@ -84,6 +85,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnFrissit);
             this.groupBox1.Controls.Add(this.txtNyilasOsszfel);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.listNyilaszarok);
@@ -107,7 +109,7 @@
             // 
             // txtNyilasOsszfel
             // 
-            this.txtNyilasOsszfel.Location = new System.Drawing.Point(146, 264);
+            this.txtNyilasOsszfel.Location = new System.Drawing.Point(146, 284);
             this.txtNyilasOsszfel.Name = "txtNyilasOsszfel";
             this.txtNyilasOsszfel.Size = new System.Drawing.Size(100, 20);
             this.txtNyilasOsszfel.TabIndex = 18;
@@ -115,7 +117,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 267);
+            this.label11.Location = new System.Drawing.Point(16, 287);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(119, 13);
             this.label11.TabIndex = 17;
@@ -124,7 +126,7 @@
             // listNyilaszarok
             // 
             this.listNyilaszarok.FormattingEnabled = true;
-            this.listNyilaszarok.Location = new System.Drawing.Point(146, 161);
+            this.listNyilaszarok.Location = new System.Drawing.Point(146, 181);
             this.listNyilaszarok.Name = "listNyilaszarok";
             this.listNyilaszarok.Size = new System.Drawing.Size(100, 95);
             this.listNyilaszarok.TabIndex = 16;
@@ -132,7 +134,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 165);
+            this.label10.Location = new System.Drawing.Point(21, 185);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 15;
@@ -140,7 +142,7 @@
             // 
             // txtAlapter
             // 
-            this.txtAlapter.Location = new System.Drawing.Point(146, 105);
+            this.txtAlapter.Location = new System.Drawing.Point(146, 125);
             this.txtAlapter.Name = "txtAlapter";
             this.txtAlapter.Size = new System.Drawing.Size(100, 20);
             this.txtAlapter.TabIndex = 14;
@@ -148,7 +150,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 108);
+            this.label9.Location = new System.Drawing.Point(21, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 13;
@@ -156,14 +158,14 @@
             // 
             // txtHossz
             // 
-            this.txtHossz.Location = new System.Drawing.Point(146, 78);
+            this.txtHossz.Location = new System.Drawing.Point(146, 98);
             this.txtHossz.Name = "txtHossz";
             this.txtHossz.Size = new System.Drawing.Size(100, 20);
             this.txtHossz.TabIndex = 12;
             // 
             // txtSzelesseg
             // 
-            this.txtSzelesseg.Location = new System.Drawing.Point(146, 51);
+            this.txtSzelesseg.Location = new System.Drawing.Point(146, 71);
             this.txtSzelesseg.Name = "txtSzelesseg";
             this.txtSzelesseg.Size = new System.Drawing.Size(100, 20);
             this.txtSzelesseg.TabIndex = 11;
@@ -171,7 +173,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 81);
+            this.label8.Location = new System.Drawing.Point(21, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 10;
@@ -180,7 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 54);
+            this.label7.Location = new System.Drawing.Point(21, 74);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 9;
@@ -188,7 +190,7 @@
             // 
             // txtOsszFal
             // 
-            this.txtOsszFal.Location = new System.Drawing.Point(146, 132);
+            this.txtOsszFal.Location = new System.Drawing.Point(146, 152);
             this.txtOsszFal.Name = "txtOsszFal";
             this.txtOsszFal.Size = new System.Drawing.Size(100, 20);
             this.txtOsszFal.TabIndex = 7;
@@ -196,7 +198,7 @@
             // cmbSzoba
             // 
             this.cmbSzoba.FormattingEnabled = true;
-            this.cmbSzoba.Location = new System.Drawing.Point(125, 24);
+            this.cmbSzoba.Location = new System.Drawing.Point(125, 44);
             this.cmbSzoba.Name = "cmbSzoba";
             this.cmbSzoba.Size = new System.Drawing.Size(121, 21);
             this.cmbSzoba.TabIndex = 6;
@@ -204,7 +206,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 135);
+            this.label3.Location = new System.Drawing.Point(21, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 1;
@@ -213,7 +215,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 27);
+            this.label2.Location = new System.Drawing.Point(21, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 0;
@@ -323,6 +325,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnFrissit
+            // 
+            this.btnFrissit.Location = new System.Drawing.Point(95, 13);
+            this.btnFrissit.Name = "btnFrissit";
+            this.btnFrissit.Size = new System.Drawing.Size(75, 23);
+            this.btnFrissit.TabIndex = 34;
+            this.btnFrissit.Text = "Frissít";
+            this.btnFrissit.UseVisualStyleBackColor = true;
+            this.btnFrissit.Click += new System.EventHandler(this.btnFrissit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +397,7 @@
         private System.Windows.Forms.CheckBox chbMindenSzoba;
         private System.Windows.Forms.Button btnElozo;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFrissit;
     }
 }
 

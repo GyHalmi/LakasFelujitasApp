@@ -20,7 +20,7 @@ namespace LakasFelujitasApp
 
             //bal oldal
             szobakatLetrehoz();
-            listakatFeltolt();
+            listatFeltolt();
             pictureBox1.BackColor = Color.White;
 
             //jobb oldal
@@ -33,10 +33,12 @@ namespace LakasFelujitasApp
             this.Shown += Form_Shown;
 
             MessageBox.Show(
-                "\n új szoba készítés!" +
-                "\n alapeterulet típus kiválasztás láthatóvá tétele! " +
-                "\n //txt értékek átadása szoba.meretekMegadasa() // kéne egy string paraméteres verzió is / Eszkozok osztaly lehet nem is kell majd" +
-                "\n  elkészült szobák tárolása file-ban!" +
+                "\n szobák berolvasás fájlból!" +
+
+                "\nn új szoba készítés!" +
+                "\n csak TIEZEDESVESSZŐ // kéne egy string paraméteres verzió is" +
+                "\n// Eszkozok osztaly lehet nem is kell majd" +
+
                 "\n  a festhető magasság megadott 0 esetén 1 lesz" +
                 "\n\nplafon számolás, RÉSzlegesFalfestés " +
                  "\nnyilászáro hozzarandelés, falgombok működése(\n" +
@@ -46,45 +48,46 @@ namespace LakasFelujitasApp
                 "\n\n(a beépítési magasság mindhol = 1)" +
                 "");
         }
+
         private void Form_Shown(Object sender, EventArgs e)
         {
             cmbSzoba.SelectedIndexChanged += cmbSzoba_SelectedIndexChanged;
-            cmbSzoba.SelectedIndex = 0; //kedő alaprajz
+            //cmbSzoba.SelectedIndex = 0; //kedő alaprajz
         }
 
         //szobaInfo-s bal oldal
 
         private void szobakatLetrehoz()
         {
-            //szobak
-            Szoba folyoso = new Szoba("folyoso", 1.25, 4.95);
-            Szoba konyha = new Szoba("konyha", 2.5, 3.45);
-            Szoba kamra = new Szoba("kamra", 1.18, 1.56);
-            Szoba nappali = new Szoba("nappali", 4.5, 4.1);
-            Szoba baba = new Szoba("baba", 4.1, 3.15);
+            ////szobak
+            //Szoba folyoso = new Szoba("folyoso", 1.25, 4.95);
+            //Szoba konyha = new Szoba("konyha", 2.5, 3.45);
+            //Szoba kamra = new Szoba("kamra", 1.18, 1.56);
+            //Szoba nappali = new Szoba("nappali", 4.5, 4.1);
+            //Szoba baba = new Szoba("baba", 4.1, 3.15);
 
-            Szoba wc = new Szoba("wc", 1.31, .82, .16, .2, .6);
-            Szoba furdo = new Szoba("furdo", 2.02, 1.55, 0.32, .8, .6);
-            Szoba halo = new Szoba("halo", 3.75, 3.1, 0.4, 0.4);
+            //Szoba wc = new Szoba("wc", 1.31, .82, .16, .2, .6);
+            //Szoba furdo = new Szoba("furdo", 2.02, 1.55, 0.32, .8, .6);
+            //Szoba halo = new Szoba("halo", 3.75, 3.1, 0.4, 0.4);
 
-            //belso nyilaszarok
-            Nyilaszaro kamraAjto = new Nyilaszaro(.73, 2, 1);
-            Nyilaszaro wcAjto = new Nyilaszaro(.73, 2, 1);
-            Nyilaszaro furdoAjto = new Nyilaszaro(.73, 2, 1);
+            ////belso nyilaszarok
+            //Nyilaszaro kamraAjto = new Nyilaszaro(.73, 2, 1);
+            //Nyilaszaro wcAjto = new Nyilaszaro(.73, 2, 1);
+            //Nyilaszaro furdoAjto = new Nyilaszaro(.73, 2, 1);
 
-            Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, 1);
-            Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, 1);
-            Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, 1);
+            //Nyilaszaro nappaliAjto = new Nyilaszaro(1, 2, 1);
+            //Nyilaszaro babaAjto = new Nyilaszaro(.97, 1.94, 1);
+            //Nyilaszaro haloAjto = new Nyilaszaro(.97, 2, 1);
 
-            Nyilaszaro konyhaAjto = new Nyilaszaro(.93, 2, 1);
+            //Nyilaszaro konyhaAjto = new Nyilaszaro(.93, 2, 1);
 
-            //kulso nyilaszarok
-            Nyilaszaro konyhaAblak = new Nyilaszaro(1.3, 1.43, 1);
-            Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, 1);
-            Nyilaszaro nappaliAblak = new Nyilaszaro(1.35, 1.5, 1);
-            Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, 1);
-            Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1);
-            Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59, 1);
+            ////kulso nyilaszarok
+            //Nyilaszaro konyhaAblak = new Nyilaszaro(1.3, 1.43, 1);
+            //Nyilaszaro haloAblak = new Nyilaszaro(1.3, 1.43, 1);
+            //Nyilaszaro nappaliAblak = new Nyilaszaro(1.35, 1.5, 1);
+            //Nyilaszaro nappaliErkelyAjto = new Nyilaszaro(0.85, 2.38, 1);
+            //Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1);
+            //Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59, 1);
 
             //nyilaszarokat szobakhoz rendel
             //kamra.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
@@ -95,7 +98,13 @@ namespace LakasFelujitasApp
             //baba.Nyilaszarok.AddRange(new List<Nyilaszaro>() { babaAjto, babaErkelyAjto });
 
         }
-        private void listakatFeltolt()
+
+        private void listatFrissit()
+        {
+            cmbSzoba.Items.Clear();
+            listatFeltolt();
+        }
+        private void listatFeltolt()
         {
             foreach (var sz in Szoba.mindenSzoba)
             {
@@ -220,27 +229,7 @@ namespace LakasFelujitasApp
             falGombSzinezes(btn);
             festeketSzamol();
 
-            //double fal = double.Parse(btn.Text);
 
-            //double numFal = (double)numTobbSzobaMagassag.Value / 100;
-            //double szobaMag = Szoba.mindenSzoba[(int)btn.Tag].Magassag;
-            //numFal = numFal > szobaMag ? szobaMag : numFal;
-
-            //fal *= numFal;
-
-
-            //double osszesFal = double.Parse(txtTobbSzobaSzinesFestek.Text);
-
-            //if (btn.ForeColor == Color.Green)
-            //{
-            //    btn.ForeColor = Color.Red;
-            //    txtTobbSzobaSzinesFestek.Text = osszesFal - fal + "";
-            //}
-            //else
-            //{
-            //    btn.ForeColor = Color.Green;
-            //    txtTobbSzobaSzinesFestek.Text = osszesFal + fal + "";
-            //}
         }
 
         private void chbSzoba_CheckedChanged(object sender, EventArgs e)
@@ -283,25 +272,6 @@ namespace LakasFelujitasApp
                 felulet += szoba.festendoFelulet(mag);
             }
 
-
-            //double osszFal = 0;
-            //double osszAlap = 0;
-            //foreach (Control ctrl in grbSzobak.Controls)
-            //{
-            //    if (ctrl is CheckBox)
-            //    {
-            //        CheckBox chb = (CheckBox)ctrl;
-            //        if (chb.Checked)
-            //        {
-            //            Szoba szoba = Szoba.mindenSzoba[(int)chb.Tag];
-            //            osszFal += szoba.festendoFeluletAdottMagassagig(mag);
-            //            osszAlap += szoba.alapterulet();
-            //        }
-            //    }
-
-            //}
-
-            //if (chbPlafon.Checked) txtTobbSzobaSzinesFestek.Text = osszFal + osszAlap + "";
             txtFestendoFelulet.Text = felulet.ToString();
         }
 
@@ -326,6 +296,11 @@ namespace LakasFelujitasApp
         private void button1_Click(object sender, EventArgs e)
         {
             new Uj01_AlapteruletValaszto().ShowDialog();
+        }
+
+        private void btnFrissit_Click(object sender, EventArgs e)
+        {
+            listatFrissit();
         }
     }
 

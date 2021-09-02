@@ -88,7 +88,6 @@ namespace LakasFelujitasApp
             this.Focus();
         }
 
-
         private void btnKesz_Click(object sender, EventArgs e)
         {
             Szoba.szobaKesz(szoba);
@@ -107,6 +106,7 @@ namespace LakasFelujitasApp
             kivalasztottFal().nyilaszarotHozzaad(txtSzelesseg, txtMagassag, txtBeepMag);
             nyilaszarokatListaz();
         }
+
         private Fal kivalasztottFal()
         {
             int ind = 0;
@@ -125,6 +125,7 @@ namespace LakasFelujitasApp
             form2.Show();
             this.Close();
         }
+
         private void nyilaszarokatListaz()
         {
             listBox1.Items.Clear();
@@ -139,5 +140,7 @@ namespace LakasFelujitasApp
             kivalasztottFal().Nyilaszarok.RemoveAt(listBox1.SelectedIndex);
             nyilaszarokatListaz();
         }
+
+
     }
 }

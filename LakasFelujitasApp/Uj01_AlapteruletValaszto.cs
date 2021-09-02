@@ -10,13 +10,19 @@ using System.Windows.Forms;
 
 namespace LakasFelujitasApp
 {
-    
+
     public partial class Uj01_AlapteruletValaszto : Form
     {
         private Szoba szoba;
+        private Size alapMeret;
+        private Size nagyMeret;
+        private int alapGombDb;
         public Uj01_AlapteruletValaszto()
         {
             InitializeComponent();
+            alapMeret = btnSzabalyos.Image.Size;
+            nagyMeret = new Size(alapMeret.Width + 30, alapMeret.Height + 30);
+            alapGombDb = gbAlapterulet.Controls.Count;
             btnSzabalyos.Tag = Alapterulet.Szabalyos;
             btnSzabalytalan.Tag = Alapterulet.Szabalytalan;
             alapterGombEvent();
@@ -33,7 +39,15 @@ namespace LakasFelujitasApp
         private void btnAlapter_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            btn.BackgroundImageLayout = ImageLayout.Zoom;
+            if (btn.Image.Size == alapMeret)
+            {
+                foreach (Control c in gbAlapterulet.Controls)
+                {
+                    Button b = (Button)c;
+                    b.Image = new Bitmap(b.Image, alapMeret);
+                }
+                gombKepetNagyit(btn);
+            }
         }
 
         private void Uj01_AlapteruletValaszto_Shown(object sender, EventArgs e)
@@ -42,16 +56,15 @@ namespace LakasFelujitasApp
             if (szoba != null)
             {
                 txtNev.Text = szoba.Nev;
-                switch (szoba.AlapteruletTipus)
+                int ind = 0;
+                while (ind < alapGombDb &&
+                    szoba.AlapteruletTipus != (Alapterulet)alapGomb(ind).Tag)
                 {
-                    case Alapterulet.Szabalyos:
-                        btnSzabalyos.Select();
-                        break;
-                    case Alapterulet.Szabalytalan:
-                        btnSzabalytalan.Select();
-                        break;
-                    default:
-                        break;
+                    ind++;
+                }
+                if (ind < alapGombDb)
+                {
+                    gombKepetNagyit(alapGomb(ind));
                 }
             }
             this.Focus();
@@ -63,19 +76,28 @@ namespace LakasFelujitasApp
             Alapterulet valasztottAlapter()
             {
                 int ind = 0;
-                bool talalt = false;
-                do
+                while (alapGombDb > ind &&
+                    alapGomb(ind).Image.Size == alapMeret)
                 {
-                    if (((Button)gbAlapterulet.Controls[ind]).Focused) talalt = true;
                     ind++;
-                } while (!talalt);
+                }
                 return (Alapterulet)((Button)gbAlapterulet.Controls[ind]).Tag;
             }
+
             szoba = new Szoba(txtNev.Text, valasztottAlapter());
             Form form2 = new Uj02_SzobatKeszit();
             form2.Tag = szoba;
             this.Close();
             form2.Show();
+        }
+
+        private Button alapGomb(int index)
+        {
+            return (Button)gbAlapterulet.Controls[index];
+        }
+        private void gombKepetNagyit(Button btn)
+        {
+            btn.Image = new Bitmap(btn.Image, nagyMeret);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,36 @@ namespace LakasFelujitasApp
 
         public List<Fal> Falak;
 
-      public static void szobaKesz(Szoba szoba)
+
+        public static void szobaKesz(Szoba szoba)
         {
             mindenSzoba.Add(szoba);
+            mentesFajlba();
+        }
+        private static string[] mindenSzobaTomb()
+        {
+            string fejlec = "Nev;AlapteruletTipus;Szelesseg;Hossz;KiesoSzelesseg;KiesoHossz;FesthetoMagassag";
+            string[] szobak = new string[mindenSzoba.Count + 1];
+            szobak[0] = fejlec;
+            string szobaInfo(Szoba sz)
+            {
+                return $"{sz.Nev};{(int)sz.AlapteruletTipus};{sz.Szelesseg};{sz.Hossz};{sz.KiesoSzelesseg};{sz.KiesoHossz};{sz.FesthetoMagassag}";
+            }
+            for (int i = 0; i < mindenSzoba.Count; i++)
+            {
+                szobak[i + 1] = szobaInfo(mindenSzoba[i]);
+            }
+            return szobak;
+        }
+        private static void mentesFajlba()
+        {
+            File.WriteAllLines("mentettSzobak.txt", mindenSzobaTomb());
         }
         public Szoba(string nev, Alapterulet alapteruletTipus)
         {
             Nev = nev;
             AlapteruletTipus = alapteruletTipus;
             Falak = new List<Fal>();
-            
         }
         public void meretekMegadasa(double szelesseg, double hossz, double kiesoSzelesseg, double kiesoHossz, double festhetoMagassag)
         {
@@ -201,7 +222,13 @@ namespace LakasFelujitasApp
         {
             Falak[falIndex].Festendo = b;
         }
-
+        public override string ToString()
+        {
+            return $"Nev={Nev}; AlapteruletTipus={AlapteruletTipus}; " +
+                $"Szelesseg{Szelesseg}; Hossz={Hossz}; " +
+                $"KiesoSzelesseg={KiesoSzelesseg}; KiesoHossz={KiesoHossz}; " +
+                $"festhetoMagassag={FesthetoMagassag}";
+        }
 
     }
 
