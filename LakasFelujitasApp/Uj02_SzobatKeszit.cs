@@ -13,59 +13,40 @@ namespace LakasFelujitasApp
     public partial class Uj02_SzobatKeszit : Form
     {
         private Szoba szoba;
+        Graphics g;
+        int x = -1;
+        int y = -1;
+        bool moving = false;
+        Pen pen;
         public Uj02_SzobatKeszit()
         {
             InitializeComponent();
-            this.Shown += Uj02_SzobatKeszit_Shown;
+            g = panelCanvas.CreateGraphics();
+            pen = new Pen(Color.Black, 5 );
         }
 
-        private void Uj02_SzobatKeszit_Shown(Object sender, EventArgs e)
+        private void panelCanvas_MouseDown(object sender, MouseEventArgs e)
         {
-            szoba = Eszkozok.tagOlvaso(this);
-            switch (szoba.AlapteruletTipus)
+            moving = true;
+            x = e.X;
+            y = e.Y;
+        }
+
+        private void panelCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (moving && x != -1 && y != -1)
             {
-                case Alapterulet.Szabalyos:
-                    {
-                        pictureBox1.Image = Properties.Resources.szabalyos_meretezve;
-                        this.panelKieso.Visible = false;
-                    }
-                    break;
-                case Alapterulet.Szabalytalan:
-                    {
-                        pictureBox1.Image = Properties.Resources.szabalytalan_meretezve;
-                    }
-                    break;
-                default:
-                    break;
+                g.DrawLine(pen, new Point(x, y), e.Location);
+                x = e.X;
+                y = e.Y;
             }
-            if (szoba.Szelesseg > 0)
-            {
-                txtSzelesseg.Text = szoba.Szelesseg.ToString();
-                txtHosszusag.Text = szoba.Hossz + "";
-                txtMagassag.Text = szoba.FesthetoMagassag.ToString();
-                txtKiesoSzelesseg.Text = szoba.KiesoSzelesseg.ToString();
-                txtKiesoHosszusag.Text = szoba.KiesoHossz.ToString();
-            }
-            this.Focus();
-
         }
 
-        private void btnSzobaMeretezve_Click(object sender, EventArgs e)
+        private void panelCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            szoba.meretekMegadasa(txtSzelesseg, txtHosszusag, txtKiesoSzelesseg, txtKiesoHosszusag, txtMagassag);
-
-            Uj03_FalakNyilaszarok form3 = new Uj03_FalakNyilaszarok();
-            form3.Tag = szoba;
-            this.Close();
-            form3.Show();
-        }
-
-        private void btnVissza_Click(object sender, EventArgs e)
-        {
-            Uj01_AlapteruletValaszto form1 = new Uj01_AlapteruletValaszto();
-            form1.Tag = szoba;
-            this.Close();
-            form1.Show();
+            moving = false;
+            x = -1;
+            y = -1;
         }
     }
 }

@@ -35,25 +35,25 @@ namespace LakasFelujitasApp
 
             this.Shown += Form_Shown;
 
-            MessageBox.Show(
-                "btnFrissit alatt serializálás próbálgatása/Szoba sz.mentesFajlba()" +
-                "\nmentés betöltés -> System.Text.Json  Serialization" +
-                "https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0" +
-                "\n /szobák berolvasás fájlból!" +
+            //MessageBox.Show(
+            //    "btnFrissit alatt serializálás próbálgatása/Szoba sz.mentesFajlba()" +
+            //    "\nmentés betöltés -> System.Text.Json  Serialization" +
+            //    "https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0" +
+            //    "\n /szobák berolvasás fájlból!" +
 
-                "\nn új szoba készítés!" +
-                "\n csak TIEZEDESVESSZŐ // kéne egy string paraméteres verzió is" +
-                "\n// Eszkozok osztaly lehet nem is kell majd" +
+            //    "\nn új szoba készítés!" +
+            //    "\n csak TIEZEDESVESSZŐ // kéne egy string paraméteres verzió is" +
+            //    "\n// Eszkozok osztaly lehet nem is kell majd" +
 
-                "\n  a festhető magasság megadott 0 esetén 1 lesz" +
-                "\n\nplafon számolás, RÉSzlegesFalfestés " +
-                 "\nnyilászáro hozzarandelés, falgombok működése(\n" +
-                 "\n\na faltagkiolvasó saját FormatException-t majd tesztelni" +
-                "\n\n//nincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
-                "\n\tshown rajzol, de egyből eltűnik.." +
-                "\n\n(a beépítési magasság mindhol = 1)" +
-                "\n progrm működés tesztek nulla Mindenszoba = 0 állapottal" +
-                "");
+            //    "\n  a festhető magasság megadott 0 esetén 1 lesz" +
+            //    "\n\nplafon számolás, RÉSzlegesFalfestés " +
+            //     "\nnyilászáro hozzarandelés, falgombok működése(\n" +
+            //     "\n\na faltagkiolvasó saját FormatException-t majd tesztelni" +
+            //    "\n\n//nincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
+            //    "\n\tshown rajzol, de egyből eltűnik.." +
+            //    "\n\n(a beépítési magasság mindhol = 1)" +
+            //    "\n progrm működés tesztek nulla Mindenszoba = 0 állapottal" +
+            //    "");
         }
 
         private void Form_Shown(Object sender, EventArgs e)
@@ -305,7 +305,7 @@ namespace LakasFelujitasApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Uj01_AlapteruletValaszto().ShowDialog();
+            new Uj02_SzobatKeszit().ShowDialog();
         }
 
         private void btnFrissit_Click(object sender, EventArgs e)
