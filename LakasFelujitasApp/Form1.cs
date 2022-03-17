@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
 
 namespace LakasFelujitasApp
 {
@@ -33,7 +36,10 @@ namespace LakasFelujitasApp
             this.Shown += Form_Shown;
 
             MessageBox.Show(
-                "\n szobák berolvasás fájlból!" +
+                "btnFrissit alatt serializálás próbálgatása/Szoba sz.mentesFajlba()" +
+                "\nmentés betöltés -> System.Text.Json  Serialization" +
+                "https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0" +
+                "\n /szobák berolvasás fájlból!" +
 
                 "\nn új szoba készítés!" +
                 "\n csak TIEZEDESVESSZŐ // kéne egy string paraméteres verzió is" +
@@ -46,6 +52,7 @@ namespace LakasFelujitasApp
                 "\n\n//nincs kezdő alaprajz -> load eventben nem lehet rajzolni" +
                 "\n\tshown rajzol, de egyből eltűnik.." +
                 "\n\n(a beépítési magasság mindhol = 1)" +
+                "\n progrm működés tesztek nulla Mindenszoba = 0 állapottal" +
                 "");
         }
 
@@ -59,16 +66,19 @@ namespace LakasFelujitasApp
 
         private void szobakatLetrehoz()
         {
-            ////szobak
+            //szobak
             //Szoba folyoso = new Szoba("folyoso", 1.25, 4.95);
-            //Szoba konyha = new Szoba("konyha", 2.5, 3.45);
-            //Szoba kamra = new Szoba("kamra", 1.18, 1.56);
+            Szoba konyha = new Szoba("konyha", 2.5, 3.45);
+            Szoba kamra = new Szoba("kamra", 1.18, 1.56);
             //Szoba nappali = new Szoba("nappali", 4.5, 4.1);
             //Szoba baba = new Szoba("baba", 4.1, 3.15);
 
             //Szoba wc = new Szoba("wc", 1.31, .82, .16, .2, .6);
             //Szoba furdo = new Szoba("furdo", 2.02, 1.55, 0.32, .8, .6);
             //Szoba halo = new Szoba("halo", 3.75, 3.1, 0.4, 0.4);
+
+            kamra.Falak[0].nyilaszarotHozzaad(.73, 2, 1);
+            kamra.Falak[3].nyilaszarotHozzaad(.46, .59, 1);
 
             ////belso nyilaszarok
             //Nyilaszaro kamraAjto = new Nyilaszaro(.73, 2, 1);
@@ -89,7 +99,7 @@ namespace LakasFelujitasApp
             //Nyilaszaro babaErkelyAjto = new Nyilaszaro(1.34, 2.4, 1);
             //Nyilaszaro kamraAblak = new Nyilaszaro(.46, .59, 1);
 
-            //nyilaszarokat szobakhoz rendel
+            ////nyilaszarokat szobakhoz rendel
             //kamra.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAblak, kamraAjto });
             //konyha.Nyilaszarok.AddRange(new List<Nyilaszaro>() { konyhaAblak, konyhaAjto });
             //folyoso.Nyilaszarok.AddRange(new List<Nyilaszaro>() { kamraAjto, wcAjto, furdoAjto, nappaliAjto, haloAjto, konyhaAjto });
@@ -301,6 +311,10 @@ namespace LakasFelujitasApp
         private void btnFrissit_Click(object sender, EventArgs e)
         {
             listatFrissit();
+
+            Nyilaszaro ny = new Nyilaszaro(1, 2, 0);
+            string jsonString = JsonSerializer.Serialize(ny);
+            File.WriteAllText("jsonText.json", jsonString);
         }
     }
 

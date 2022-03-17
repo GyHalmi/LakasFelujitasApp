@@ -1,0 +1,53 @@
+[33mcommit d8a95e9416e5d6c920e10719afec05563cccdb97[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Mon Aug 30 12:50:55 2021 +0200
+
+    kényszer kommit, hogy tudjam a másik gépen folytatni
+
+[33mcommit 2e01b50d0a382c2c4ff7642b4289f97aa651c528[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Thu Aug 26 20:51:55 2021 +0200
+
+    szobakészítő GUI kész //3 form használatával
+
+[33mcommit 71d92817b1c8419a0808a2d4773958bafe37a6a5[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Fri Aug 6 21:07:01 2021 +0200
+
+    kész GUI-k szobák és nyilászárók létrehozásához
+
+[33mcommit d0d707d8cd132fe6704442b205c5f761986ab9c1[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Fri Aug 6 20:57:33 2021 +0200
+
+    kész GUI-k szobák és nyilászásók létrehozásához
+
+[33mcommit 1d97a479f85b01340478012fd2db325d4d36869f[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Sun Jul 18 12:51:41 2021 +0200
+
+    egesz rendezett allapot, github miatti commit
+
+[33mcommit 08ff64f1dccdc6547a34edc20e6ec27d880bc241[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Sun Jul 18 11:35:13 2021 +0200
+
+    hibas verzio, korrabbi verzió megtekintési miatti mentés
+
+[33mcommit 3da3b23cfb000c960710e4d4369c884e0a5355cd[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Sun Jul 18 10:59:29 2021 +0200
+
+    átalakulás közben - a perketta számítások még benne
+
+[33mcommit 55c727b1a11f30512eb2bd0552c6d8fe3be451a0[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Sat Jul 3 08:55:48 2021 +0200
+
+    Add project files.
+
+[33mcommit 2620f64717722310cca59a230de9dc43558c429a[m
+Author: GyHalmi <georgehalmi@gmail.com>
+Date:   Sat Jul 3 08:55:39 2021 +0200
+
+    Add .gitignore and .gitattributes.

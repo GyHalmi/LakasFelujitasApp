@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+
 
 namespace LakasFelujitasApp
 {
@@ -23,6 +25,8 @@ namespace LakasFelujitasApp
         public double KiesoHossz { get; set; }
 
         public List<Fal> Falak;
+
+        private static string mentesHelye = "mentettSzobak.txt";
 
 
         public static void szobaKesz(Szoba szoba)
@@ -47,8 +51,33 @@ namespace LakasFelujitasApp
         }
         private static void mentesFajlba()
         {
-            File.WriteAllLines("mentettSzobak.txt", mindenSzobaTomb());
+            File.WriteAllLines(mentesHelye, mindenSzobaTomb());
+            //string jsonString = JsonSerializer.Serialize(mindenSzoba[0]);
+            //File.WriteAllText(mentesHelye, jsonString);
+
         }
+
+        public static void betoltesFajlbol()
+        {
+            string[] sorok = File.ReadAllLines(mentesHelye);
+
+            for (int i = 1; i < sorok.Length; i++) //skip first row
+            {
+                string[] meretek = sorok[i].Split(';');
+                string nev = meretek[0];
+                Alapterulet alapTer = (Alapterulet)int.Parse( meretek[1]);
+                double szel = double.Parse(meretek[2]);
+                double hossz = double.Parse(meretek[3]);
+                double kiesoSzel = double.Parse(meretek[4]);
+                double kiesoHossz = double.Parse(meretek[5]);
+                double mag = double.Parse(meretek[6]);
+                //Szoba sz = new Szoba()
+
+
+ 
+            }
+        }
+
         public Szoba(string nev, Alapterulet alapteruletTipus)
         {
             Nev = nev;
